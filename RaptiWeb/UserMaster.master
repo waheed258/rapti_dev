@@ -444,9 +444,9 @@
         <!-- inject:js -->
         
        
-        <script src= "<%: ResolveUrl("Scripts/jquery-1.8.2.min.js")  %>"></script>
+        <script src= "<%: ResolveUrl("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")  %>"></script>
         
-        <script src=" <%: ResolveUrl("~/Scripts/bootstrap/dist/js/bootstrap.min.js") %>"></script>
+        <script src=" <%: ResolveUrl("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.js") %>"></script>
         <script src=" <%: ResolveUrl("~/Scripts/jquery.nicescroll/dist/jquery.nicescroll.min.js") %>"></script>
         <script src=" <%: ResolveUrl("~/Scripts/autosize/dist/autosize.min.js") %>"></script>
         <!-- endinject -->
@@ -458,7 +458,7 @@
 
         <!--sparkline-->
         <script src=" <%: ResolveUrl("~/Scripts/bower-jquery-sparkline/dist/jquery.sparkline.retina.js") %> "></script>
-        <script src=" <%: ResolveUrl("~/Scripts/js/init-sparkline.js") %>"></script>
+        <script src=" <%: ResolveUrl("~/Scripts/assets/js/init-sparkline.js") %>"></script>
 
         <!-- Rickshaw Chart Depencencies -->
         <script src=" <%: ResolveUrl("~/Scripts/rickshaw/vendor/d3.min.js") %> "></script>
