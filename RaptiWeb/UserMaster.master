@@ -11,13 +11,13 @@
 
         <!-- inject:css -->
         
-        <link rel="stylesheet" href="<%: ResolveUrl("~/Css/bootstrap.min.css") %>">
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Css/bootstrap.min.css") %>">
        
-        <link rel="stylesheet" href="<%: ResolveUrl("~/Css/font-awesome.min.cs") %>" >
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Css/font-awesome.min.cs") %>" >
         <!-- endinject -->
 
         <!-- Main Style  -->
-        <link href=" <%: ResolveUrl("~/Css/UserMasterCss/main.css") %>" rel="stylesheet" />
+        <link href=" <%: ResolveUrl("~/Content/Css/UserMasterCss/main.css") %>" rel="stylesheet" />
         
 
         <!-- Rickshaw Chart Depencencies -->

@@ -1,0 +1,5 @@
+D:\FullRapti\Rapti_Solution\EntityManager\bin\Debug\EntityManager.dll
+D:\FullRapti\Rapti_Solution\EntityManager\bin\Debug\EntityManager.pdb
+D:\FullRapti\Rapti_Solution\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
+D:\FullRapti\Rapti_Solution\EntityManager\obj\Debug\EntityManager.dll
+D:\FullRapti\Rapti_Solution\EntityManager\obj\Debug\EntityManager.pdb
