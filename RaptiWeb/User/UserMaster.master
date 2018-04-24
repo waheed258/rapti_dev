@@ -12,6 +12,7 @@
     <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
     <title>Home</title>
 
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Css/SiteMaster.css") %>">
     <!-- inject:css -->
 
     <link rel="stylesheet" href="<%: ResolveUrl("~/Scripts/bootstrap/dist/css/bootstrap.min.css") %>">
@@ -88,7 +89,7 @@
 
                             <li class="dropdown dropdown-usermenu">
                                 <a href="#" class=" dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                   <%-- <div class="user-avatar">
+                                    <%-- <div class="user-avatar">
                                         <img src="<%: ResolveUrl("Images/UserMaster/logo-icon-dark.png") %>" alt="...">
                                     </div>--%>
                                     <span class="hidden-sm hidden-xs">John Doe</span>
@@ -114,7 +115,7 @@
                 <!--header end-->
 
                 <!--sidebar start-->
-                <aside id="aside" class="ui-aside" style="height: 100%">
+                <aside id="aside" class="ui-aside fixed-content" style="height: 100%">
                     <ul class="nav" ui-nav>
                         <li class="active">
                             <a href="index.html"><i class="fa fa-home"></i><span>Dashboard </span></a>
@@ -154,12 +155,130 @@
                             <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="nav nav-sub">
                                 <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
-                                <!--<li><a href="tables.html"><span>Basic Table </span></a></li>-->
-                                <!--<li><a href="dynamic-table.html"><span>Dynamic Table</span></a></li>-->
                                 <li><a href="#"><span>Dynamic Table</span></a></li>
                             </ul>
                         </li>
-
+                         <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li> <li>
+                            <a href=""><i class="fa fa-table"></i><span>Data Tables</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="nav nav-sub">
+                                <li class="nav-sub-header"><a href=""><span>Data Tables</span></a></li>
+                                <li><a href="#"><span>Dynamic Table</span></a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </aside>
@@ -188,9 +307,9 @@
                     </div>
                 </div>
                 <!--main content end-->
- 
+
             </div>
- 
+
         </section>
         <!--footer start-->
         <%-- <div id="footer" class="ui-footer">
