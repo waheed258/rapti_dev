@@ -13,7 +13,7 @@ namespace BusinessManager
        DoUtility _objDOUtility = new DoUtility();
 
 
-        #region DynamicMenuData
+        #region DynamicMenus
         // added by Anitha on 25/04/2018
 
        //check in again
