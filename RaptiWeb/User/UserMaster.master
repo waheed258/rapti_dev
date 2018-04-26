@@ -20,8 +20,7 @@
     <!-- endinject -->
 
     <!-- Main Style  -->
-    <link href=" <%: ResolveUrl("~/Content/Css/UserMasterCss/main.min.css") %>" rel="stylesheet" />
-
+    <link href=" <%: ResolveUrl("~/Content/Css/UserMasterCss/main.css") %>" rel="stylesheet" />
 
 
     <!-- Rickshaw Chart Depencencies -->
@@ -83,7 +82,7 @@
                         <!--search end-->
 
                         <!--notification start-->
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right" id="ultopmenu" runat="server">
 
 
 
@@ -116,6 +115,10 @@
 
                 <!--sidebar start-->
                 <aside id="aside" class="ui-aside fixed-content" style="height: 100%" runat="server">
+
+                  
+
+
                 </aside>
                 <!--sidebar end-->
 

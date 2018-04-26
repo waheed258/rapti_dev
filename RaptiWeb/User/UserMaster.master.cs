@@ -39,7 +39,7 @@ public partial class User_UserMaster : System.Web.UI.MasterPage
                 }
                 else
                 {
-                    strMenu += "<li><a href='#'>" + mainItem["MenuIcon"].ToString() + "<span>" + mainItem["MenuName"].ToString() + "</span></a>";
+                    strMenu += "<li><a href=''>" + mainItem["MenuIcon"].ToString() + " <i class='fa fa-angle-right pull-right'> </i> <span>" + mainItem["MenuName"].ToString() + "</span></a>";
                 }
                 DataRow[] lstSubMenu;
                 lstSubMenu = objdsmenu.Tables[1].Select("ParentMenuId='" + mainItem["MenuId"] + "'");
@@ -51,7 +51,7 @@ public partial class User_UserMaster : System.Web.UI.MasterPage
                     foreach (var subMenuItem in lstSubMenu)
                     {
 
-                        strMenu += "<li class='nav-sub-header'><a href=" + subMenuItem["Url"].ToString() + "><span>" + subMenuItem["MenuName"].ToString() + "</span></a></li>";
+                        strMenu += "<li class='nav-sub'><a href=" + subMenuItem["Url"].ToString() + "><span>" + subMenuItem["MenuName"].ToString() + "</span></a></li>";
                     }
                     strMenu += "</ul>";
                 }
@@ -62,3 +62,4 @@ public partial class User_UserMaster : System.Web.UI.MasterPage
         aside.InnerHtml = strMenu;
     }
 }
+//fa fa-angle-right pull-right
