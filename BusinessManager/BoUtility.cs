@@ -13,10 +13,10 @@ namespace BusinessManager
        DoUtility _objDOUtility = new DoUtility();
 
 
-        #region DynamicMenus
+        #region Dynamic Menus
         // added by Anitha on 25/04/2018
 
-       //check in again
+      //Menus
        public DataSet GetMenusByRole(int RoleId, int CompanyId)
         {
             return _objDOUtility.GetMenusByRole(RoleId, CompanyId);
