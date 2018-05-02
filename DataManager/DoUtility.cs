@@ -23,5 +23,38 @@ namespace DataManager
             return ExecuteDataSet("menuaccess_by_role", htParams);
         }
         #endregion
+
+        #region Country,State,City,Currency
+        public DataSet GetCountries()
+        {
+            return ExecuteDataSet("CountriesMaster_Get");
+        }
+
+        public DataSet GetState(int StateId)
+        {
+            Hashtable htparams = new Hashtable
+           {
+             {"@countryId",StateId}
+           };
+
+            return ExecuteDataSet("StatesMaster_Get", htparams);
+
+        }
+        public DataSet GetCities(int Id)
+        {
+            Hashtable htparams = new Hashtable{
+                                            {"@StateId",Id},
+            };
+            return ExecuteDataSet("CitiesMaster_Get", htparams);
+        }
+        public DataSet GetCurrency()
+        {
+            return ExecuteDataSet("CurrencyMaster_Get");
+        }
+
+        
+        #endregion
+
+
     }
 }
