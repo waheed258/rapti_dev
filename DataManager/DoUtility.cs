@@ -24,7 +24,7 @@ namespace DataManager
         }
         #endregion
 
-        #region Country,State,City,Currency
+        #region Country,State,City,Currency,Vat Type
         public DataSet GetCountries()
         {
             return ExecuteDataSet("CountriesMaster_Get");
@@ -52,7 +52,11 @@ namespace DataManager
             return ExecuteDataSet("CurrencyMaster_Get");
         }
 
-        
+        public DataSet GetVatData()
+        {
+            return ExecuteDataSet("Vat_GetData");
+        }
+
         #endregion
 
 

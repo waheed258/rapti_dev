@@ -42,7 +42,11 @@ namespace BusinessManager
        public DataSet GetCurrency()
        {
            return _objDOUtility.GetCurrency();
-       } 
+       }
+       public DataSet GetVatData()
+       {
+           return _objDOUtility.GetVatData();
+       }
 
        #endregion
 
