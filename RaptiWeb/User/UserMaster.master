@@ -115,10 +115,6 @@
 
                 <!--sidebar start-->
                 <aside id="aside" class="ui-aside fixed-content" style="height: 100%" runat="server">
-
-                  
-
-
                 </aside>
                 <!--sidebar end-->
 
@@ -132,8 +128,8 @@
 
                                 <div class="col-md-12 col-lg-12 col-sm-12">
                                     <div class="panel">
-                                        <div class="panel-body">
-                                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                        <div class="panel-body" >
+                                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1"  runat="server">
                                             </asp:ContentPlaceHolder>
                                         </div>
                                     </div>
@@ -150,9 +146,9 @@
 
         </section>
         <!--footer start-->
-        <%-- <div id="footer" class="ui-footer">
-            2017 &copy; Bootkit by ThemeBucket.
-        </div>--%>
+         <div id="footer" class="ui-footer">
+            2018 &copy; Dinoosys technologies. 
+        </div>
         <!--footer end-->
     </form>
 
@@ -189,13 +185,6 @@
     <!-- Common Script   -->
     <script src=" <%: ResolveUrl("~/Scripts/UserMasterJs/main.js") %>"></script>
 
-    <!--Form-wizard-->
-    <%--<script src=" <%: ResolveUrl("~/Content/jquery/jquery.min.js") %> "></script>--%>
 
-    <script src="  <%: ResolveUrl("~/Content/jquery-validation/jquery.validate.js") %>  "></script>
-
-    <script src=" <%: ResolveUrl("~/Content/jquery-steps/jquery.steps.js") %>"></script>
-
-    <script src=" <%: ResolveUrl("~/Content/forms/form-wizard.js") %> "></script>
 </body>
 </html>

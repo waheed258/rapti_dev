@@ -43,7 +43,7 @@ public partial class User_Tabs : System.Web.UI.Page
   }
   protected void txtName_TextChanged(object sender, EventArgs e)
   {
-      txtName.Text = "ANitha";
+      
   }
 }
    
