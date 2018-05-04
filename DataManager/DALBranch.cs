@@ -17,6 +17,7 @@ namespace DataManager
                                                 {"@BranchId",objBranch.BranchId},
                                                 {"@BranchName",objBranch.BranchName},
                                                 {"@BranchLogo",objBranch.BranchLogo},
+                                                 {"@BranchlogoPath",objBranch.BranchLogoPath},
                                                 {"@BranchPhoneNo",objBranch.BranchPhoneNo},
                                                 {"@BranchAlternativeNo",objBranch.BranchAlternativeNo},
                                                 {"@BranchEmail",objBranch.BranchEmail},

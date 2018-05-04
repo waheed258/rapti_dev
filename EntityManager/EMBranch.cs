@@ -10,6 +10,7 @@ namespace EntityManager
        public int BranchId { get; set; }
        public string BranchName { get; set; }
        public string BranchLogo { get; set; }
+       public string BranchLogoPath { get; set; }
        public string BranchPhoneNo { get; set; }
        public string BranchAlternativeNo { get; set; }
        public string BranchEmail { get; set; }

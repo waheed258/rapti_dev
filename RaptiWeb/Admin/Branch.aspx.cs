@@ -13,8 +13,8 @@ public partial class Admin_Branch : System.Web.UI.Page
 {
     BoUtility _objBoutility = new BoUtility();
     EMBranch _objEMBranch = new EMBranch();
-    DALBranch _objDALBranch = new DALBranch();
     BALBranch _objBALBranch = new BALBranch();
+    public string FileLogo = string.Empty;
 
     #region Events
     protected void Page_Load(object sender, EventArgs e)
@@ -179,6 +179,12 @@ public partial class Admin_Branch : System.Web.UI.Page
                 chkMemberOfAsata.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["BranchMemberOfAsata"]);
                 chkIsactive.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["BranchIsActive"]);
 
+                lblLogo.Text = ds.Tables[0].Rows[0]["BranchLogo"].ToString();
+                hfImageLogo.Value = ds.Tables[0].Rows[0]["BranchlogoPath"].ToString();
+                FileLogo = ds.Tables[0].Rows[0]["BranchlogoPath"].ToString();
+                logoview.Attributes["href"] = "../Admin/CompanyLogos/" + FileLogo;
+
+
                 hf_ConfigurationId.Value = ds.Tables[0].Rows[0]["ConfigurationId"].ToString();
                 txtVatPercentage.Text = ds.Tables[0].Rows[0]["VatPercentage"].ToString();
 
@@ -232,7 +238,22 @@ public partial class Admin_Branch : System.Web.UI.Page
             _objEMBranch.CreatedBy = 1;
             _objEMBranch.BranchCode = txtBranchCode.Text;
 
-            int Result = _objDALBranch.InsUpdBranch(_objEMBranch);
+            string filepath = string.Empty;
+            if (hfImageLogo.Value != "")
+            {
+                if (BranchLogoUpload.HasFile)
+                    lblLogo.Text = BranchLogoUpload.FileName;
+                else
+                    filepath = hfImageLogo.Value.ToString();
+            }
+            else
+                filepath = GetFile(BranchLogoUpload);
+
+            _objEMBranch.BranchLogo = lblLogo.Text;
+            _objEMBranch.BranchLogoPath = filepath;
+
+
+            int Result = _objBALBranch.InsUpdBranch(_objEMBranch);
 
 
 
@@ -257,7 +278,7 @@ public partial class Admin_Branch : System.Web.UI.Page
                 _objEMBranch.ClientMainAcNo = txtClientMainAcNo.Text;
                 _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
                 _objEMBranch.CreatedBy = 1;
-                int configResult = _objDALBranch.InsUpdConfiguration(_objEMBranch);
+                int configResult = _objBALBranch.InsUpdConfiguration(_objEMBranch);
                 if (configResult > 0)
                 {
                     Response.Redirect("BranchList.aspx");
@@ -434,6 +455,30 @@ public partial class Admin_Branch : System.Web.UI.Page
             //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
             //ExceptionLogging.SendExcepToDB(ex);
         }
+    }
+
+    private string GetFile(FileUpload FUName)
+    {
+        string fileName = string.Empty;
+        try
+        {
+           
+            if (FUName.HasFile)
+            {
+                string strPath = System.IO.Path.GetExtension(FUName.PostedFile.FileName);
+                string date = DateTime.Now.ToString("yyyyMMddhhmmssfff");
+                fileName = date + strPath;
+                FUName.SaveAs(Server.MapPath("~/Admin/CompanyLogos/" + fileName));
+                lblLogo.Text = BranchLogoUpload.FileName;
+            }
+           
+        }
+        catch (Exception ex)
+        {
+            
+           
+        }
+        return fileName;
     }
 
     private void DefaultSeletedItems()

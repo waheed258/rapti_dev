@@ -146,9 +146,9 @@
 
         </section>
         <!--footer start-->
-         <div id="footer" class="ui-footer">
+         <%--<div id="footer" class="ui-footer">
             2018 &copy; Dinoosys technologies. 
-        </div>
+        </div>--%>
         <!--footer end-->
     </form>
 

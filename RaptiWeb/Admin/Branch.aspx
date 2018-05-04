@@ -21,7 +21,7 @@
                     </legend>
                     <asp:HiddenField ID="hf_BranchId" runat="server" Value="0" />
                      <asp:HiddenField ID="hf_ConfigurationId" runat="server" Value="0" />
-
+                      <asp:HiddenField ID="hfImageLogo" runat="server" />
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="col-sm-2">
@@ -272,14 +272,11 @@
                             </div>
                             <div class="col-sm-4 ">
 
-                                <div class="input-group">
-                                    <label class="input-group-btn">
-                                        <span class="btn btn-primary">Browse&hellip;
-                                <input type="file" runat="server" style="display: none;">
-                                        </span>
-                                    </label>
-                                    <input type="text" runat="server" class="form-control input-group-text" readonly>
-                                </div>
+                              <asp:FileUpload ID="BranchLogoUpload" runat="server" />
+                             <a id="logoview" href="#" runat="server">
+                            <asp:Label ID="lblLogo" runat="server" /></a>
+                            <%--<asp:RequiredFieldValidator ControlToValidate="BranchLogoUpload" runat="server" ID="rfvBranchLogoUpload" ValidationGroup="branch"
+                                ErrorMessage="uploade Logo" SetFocusOnError="true" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                             </div>
                         </div>
                     </div>
