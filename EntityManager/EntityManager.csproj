@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EMBranch.cs" />
     <Compile Include="EMCitiesMaster.cs" />
     <Compile Include="EMCompany.cs" />
     <Compile Include="EMCountries.cs" />

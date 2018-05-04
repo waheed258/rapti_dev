@@ -16,9 +16,9 @@ namespace BusinessManager
             return _objDALCompany.InsUpdCompany(objEMCompany);
         }
 
-        public DataSet GetCompany()
+        public DataSet GetCompany(int CompanyId)
         {
-            return _objDALCompany.GetCompany();
+            return _objDALCompany.GetCompany(CompanyId);
         }
     }
 }

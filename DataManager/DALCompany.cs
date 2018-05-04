@@ -28,12 +28,17 @@ namespace DataManager
                                         {"@CompanylogoPath",objCompany.CompanylogoPath},
                                         
            };
-            return ExecuteNonQuery("Company_InsertUpdate", htParams, "@return");
+            int IsSuccess = ExecuteNonQuery("Company_InsertUpdate", htParams, "@return");
+            return IsSuccess;
         }
 
-        public DataSet GetCompany()
+        public DataSet GetCompany(int CompanyId)
         {
-            return ExecuteDataSet("CompanyMaster_Get");
+            Hashtable htParams = new Hashtable{
+                                        {"@CompanyId",CompanyId},
+            };
+            return ExecuteDataSet("CompanyMaster_Get", htParams);
         }
+
     }
 }

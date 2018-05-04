@@ -18,10 +18,17 @@ public partial class Admin_Company : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            // Company();
+            //Company(1);
             BindCountry();
             BindCurrency();
             DesableFields();
+            //string qs = "0";
+            if (!string.IsNullOrEmpty(Request.QueryString["Id"]))
+            {
+                string getId = Convert.ToString(Request.QueryString["Id"]);
+                int Id = Convert.ToInt32(getId);
+                Company(Id);
+            }
         }
     }
 
@@ -43,7 +50,7 @@ public partial class Admin_Company : System.Web.UI.Page
                 DDLCountry.DataTextField = "CountryName";
                 DDLCountry.DataValueField = "CountryId";
                 DDLCountry.DataBind();
-                DDLCountry.Items.Insert(0, new ListItem("-- Please Select --", "0"));
+                DDLCountry.Items.Insert(0, new ListItem("-- Please Select --", "-1"));
 
 
 
@@ -52,7 +59,7 @@ public partial class Admin_Company : System.Web.UI.Page
             {
                 DDLCountry.DataSource = null;
                 DDLCountry.DataBind();
-                DDLCountry.Items.Insert(0, new ListItem("-- Please Select --", "0"));
+                DDLCountry.Items.Insert(0, new ListItem("-- Please Select --", "-1"));
 
             }
         }
@@ -76,14 +83,14 @@ public partial class Admin_Company : System.Web.UI.Page
                 DDLProvince.DataTextField = "StateName";
                 DDLProvince.DataValueField = "StateId";
                 DDLProvince.DataBind();
-                DDLProvince.Items.Insert(0, new ListItem("--Select Country--", "0"));
+                DDLProvince.Items.Insert(0, new ListItem("--Select Country--", "-1"));
 
             }
             else
             {
                 DDLProvince.DataSource = null;
                 DDLProvince.DataBind();
-                DDLProvince.Items.Insert(0, new ListItem("--Select Country--", "0"));
+                DDLProvince.Items.Insert(0, new ListItem("--Select Country--", "-1"));
 
             }
         }
@@ -106,14 +113,14 @@ public partial class Admin_Company : System.Web.UI.Page
                 DDLCity.DataTextField = "CityName";
                 DDLCity.DataValueField = "CityId";
                 DDLCity.DataBind();
-                DDLCity.Items.Insert(0, new ListItem("-- Select City --", "0"));
+                DDLCity.Items.Insert(0, new ListItem("-- Select City --", "-1"));
 
             }
             else
             {
                 DDLCity.DataSource = null;
                 DDLCity.DataBind();
-                DDLCity.Items.Insert(0, new ListItem("-- Select City--", "0"));
+                DDLCity.Items.Insert(0, new ListItem("-- Select City--", "-1"));
 
             }
         }
@@ -125,21 +132,23 @@ public partial class Admin_Company : System.Web.UI.Page
     }
 
 
-    public void Company()
+    public void Company(int CompanyId)
     {
         try
         {
-            DataSet ds = _ObjBalCompany.GetCompany();
+            _ObjEmCompany.CompanyId = CompanyId;
+            DataSet ds = _ObjBalCompany.GetCompany(CompanyId);
             if (ds.Tables[0].Rows.Count > 0)
             {
-                Submit_Company.Text = "Update";
+               
                 hf_CompanyId.Value = ds.Tables[0].Rows[0]["CompanyId"].ToString();
                 txtCompanyName.Text = ds.Tables[0].Rows[0]["CompanyName"].ToString();
+
 
                 lblLogo.Text = ds.Tables[0].Rows[0]["CompanyLogo"].ToString();
                 hfImageLogo.Value = ds.Tables[0].Rows[0]["CompanylogoPath"].ToString();
                 FileLogo = ds.Tables[0].Rows[0]["CompanylogoPath"].ToString();
-                logoview.Attributes["href"] = "../Admin/ClientsLogo/" + FileLogo;
+                logoview.Attributes["href"] = "../Admin/CompanyLogos/" + FileLogo;
 
                 //CompanyLogoUpload.HasFile = ds.Tables[0].Rows[0]["CompanyLogo"].ToString();
                 txtEmailId.Text = ds.Tables[0].Rows[0]["CompanyEmail"].ToString();
@@ -156,13 +165,9 @@ public partial class Admin_Company : System.Web.UI.Page
                 DDLCurrency.SelectedIndex = DDLCurrency.Items.IndexOf(DDLCurrency.Items.FindByValue(ds.Tables[0].Rows[0]["CompanyCurrency"].ToString()));
 
             }
-            else
+           else
             {
-                Submit_Company.Text = "Submit";
-                ClearControl();
-                BindCountry();
-                BindCurrency();
-                DesableFields();
+
             }
 
 
@@ -185,14 +190,14 @@ public partial class Admin_Company : System.Web.UI.Page
                 DDLCurrency.DataTextField = "CurrencyCode";
                 DDLCurrency.DataValueField = "CurrencyId";
                 DDLCurrency.DataBind();
-                DDLCurrency.Items.Insert(0, new ListItem("-- Please Select --", "0"));
+                DDLCurrency.Items.Insert(0, new ListItem("-- Please Select --", "-1"));
 
             }
             else
             {
                 DDLCurrency.DataSource = null;
                 DDLCurrency.DataBind();
-                DDLCurrency.Items.Insert(0, new ListItem("-- Please Select --", "0"));
+                DDLCurrency.Items.Insert(0, new ListItem("-- Please Select --", "-1"));
 
             }
         }
@@ -309,10 +314,10 @@ public partial class Admin_Company : System.Web.UI.Page
         txtPhoneNo.Text = "";
         txtWebSite.Text = "";
         txtFaxNo.Text = "";
-        DDLCountry.SelectedValue = "0";
-        DDLProvince.SelectedValue = "0";
-        DDLCity.SelectedValue = "0";
-        DDLCurrency.SelectedValue = "0";
+        DDLCountry.SelectedValue = "-1";
+        DDLProvince.SelectedValue = "-1";
+        DDLCity.SelectedValue = "-1";
+        DDLCurrency.SelectedValue = "-1";
     }
 
 }
