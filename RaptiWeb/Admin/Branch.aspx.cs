@@ -13,10 +13,8 @@ public partial class Admin_Branch : System.Web.UI.Page
 {
     BoUtility _objBoutility = new BoUtility();
     EMBranch _objEMBranch = new EMBranch();
+    DALBranch _objDALBranch = new DALBranch();
     BALBranch _objBALBranch = new BALBranch();
-    public string FileLogo = string.Empty;
-
-    #region Events
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -26,39 +24,68 @@ public partial class Admin_Branch : System.Web.UI.Page
             DefaultSeletedItems();
             BindVatType();
 
-            DDLCity.Enabled = false;
-            DDLProvince.Enabled = false;
-            rfvDDLCity.Enabled = false;
-            rfvDDLProvince.Enabled = false;
-
             if (!string.IsNullOrEmpty(Request.QueryString["BranchId"]))
             {
-
-                string BranchId = "0";
-                string configId = "0";
-                if (Request.QueryString["BranchId"] == null || Request.QueryString["ConfigId"] == null)
+                var qs = "0";
+                if (Request.QueryString["ConsultantId"] == null)
                 {
-                    BranchId = "0";
-                    configId = "0";
+                    qs = "0";
                 }
-                else
-                {
-                    BranchId = Request.QueryString["BranchId"].ToString();
-
-                    configId = Request.QueryString["ConfigId"].ToString();
-                }
-
-
+                int BranchId = Convert.ToInt32(qs);
 
                 Submit_Branch.Text = "Update";
-                GetBranchDetails(BranchId, configId);
+                GetBranchDetails(BranchId);
             }
+        }
+      
+    }
+
+    private void GetBranchDetails(int BranchId)
+    {
+        try
+        {
+            _objEMBranch.BranchId = BranchId;
+            DataSet ds = _objBALBranch.Branch_GetData(BranchId);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                hf_BranchId.Value = ds.Tables[0].Rows[0]["BranchId"].ToString();
+                txtBranchName.Text = ds.Tables[0].Rows[0]["BranchName"].ToString();
+
+                txtPhoneno.Text = ds.Tables[0].Rows[0]["BranchPhoneNo"].ToString();
+                txtAlternativeNo.Text = ds.Tables[0].Rows[0]["BranchAlternativeNo"].ToString();
+                txtEmail.Text = ds.Tables[0].Rows[0]["BranchEmail"].ToString();
+                txtPhysicalAddress.Text = ds.Tables[0].Rows[0]["BranchPhysicalAddress"].ToString();
+                txtPostalAddress.Text = ds.Tables[0].Rows[0]["BranchPostalAddress"].ToString();
+
+
+                DDLCountry.SelectedIndex = DDLCountry.Items.IndexOf(DDLCountry.Items.FindByValue(ds.Tables[0].Rows[0]["BranchCountry"].ToString()));
+                DDLProvince.SelectedIndex = DDLProvince.Items.IndexOf(DDLProvince.Items.FindByValue(ds.Tables[0].Rows[0]["BranchState"].ToString()));
+                DDLProvince.SelectedIndex = DDLProvince.Items.IndexOf(DDLProvince.Items.FindByValue(ds.Tables[0].Rows[0]["BranchCity"].ToString()));
+
+                txtCoRegNo.Text = ds.Tables[0].Rows[0]["BranchCoRegNo"].ToString();
+                txtIATARegNo.Text = ds.Tables[0].Rows[0]["BranchIATARegNo"].ToString();
+                txtVatRegNo.Text = ds.Tables[0].Rows[0]["BranchVatRegNo"].ToString();
+                txtDoCex.Text = ds.Tables[0].Rows[0]["BranchDoCex"].ToString();
+
+                txtBranchCode.Text = ds.Tables[0].Rows[0]["BranchCode"].ToString();
+                DDLCurrency.SelectedIndex = DDLCurrency.Items.IndexOf(DDLCurrency.Items.FindByValue(ds.Tables[0].Rows[0]["BranchCurrency"].ToString()));
+
+                chkMemberOfAsata.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["BranchMemberOfAsata"]);       
+                chkIsactive.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["BranchIsActive"]);
+        
+            }
+        }
+        catch (Exception ex)
+        {
+
+            //lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
+            //ExceptionLogging.SendExcepToDB(ex);
         }
 
     }
     protected void chkcheckphysicaladdress_CheckedChanged(object sender, EventArgs e)
     {
-        if (chkcheckphysicaladdress.Checked == true)
+        if(chkcheckphysicaladdress.Checked == true)
         {
             txtPostalAddress.Text = txtPhysicalAddress.Text;
         }
@@ -74,7 +101,7 @@ public partial class Admin_Branch : System.Web.UI.Page
     }
     protected void chkServiceFeeMerge_CheckedChanged(object sender, EventArgs e)
     {
-        if (chkServiceFeeMerge.Checked == true)
+        if(chkServiceFeeMerge.Checked == true)
         {
             chkIsSerFeeAddToAirportTax.Checked = true;
             chkIsSerFeeMergePaymentMatch.Checked = true;
@@ -97,199 +124,65 @@ public partial class Admin_Branch : System.Web.UI.Page
     }
     protected void Reset_Branch_Click(object sender, EventArgs e)
     {
-        txtBranchName.Text = "";
-        chkIsactive.Checked = false;
-        txtBranchCode.Text = "";
-        txtPhoneno.Text = "";
-        txtAlternativeNo.Text = "";
-        txtEmail.Text = "";
-        txtPhysicalAddress.Text = "";
-        chkcheckphysicaladdress.Checked = false;
-        txtPostalAddress.Text = "";
-        DDLCountry.SelectedIndex = 0;
-        DDLProvince.SelectedIndex = 0;
-        DDLCity.SelectedIndex = 0;
-        DDLCurrency.SelectedIndex = 0;
-        txtCoRegNo.Text = "";
-        txtDoCex.Text = "";
-        txtIATARegNo.Text = "";
-        txtVatRegNo.Text = "";
-        chkMemberOfAsata.Checked = false;
-        txtVatPercentage.Text = "";
-        txtInvStartNo.Text = "";
-        txtCreditNoteStartNo.Text = "";
-        chkZeroCommForSuppliers.Checked = false;
-        chkConvertProInvToInv.Checked = false;
-        chkServiceFeeMerge.Checked = false;
-        chkIsSerFeeAddToAirportTax.Checked = false;
-        chkIsSerFeeMergePaymentMatch.Checked = false;
-        txtPreFixCorporates.Text = "";
-        txtPreFixDebtors.Text = "";
-        txtPreFixLiesures.Text = "";
-        txtRoundingDecimal.Text = "";
-        txtSupplierMainAcNo.Text = "";
-        txtClientMainAcNo.Text = "";
 
     }
-    protected void DDLCountry_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        BindState();
-    }
-    protected void DDLProvince_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        BindCity();
-    }
 
-    #endregion
-
-
-    #region PrivateMethods
-    private void GetBranchDetails(string BranchId, string ConfigId)
-    {
-        try
-        {
-            _objEMBranch.BranchId = Convert.ToInt32(BranchId);
-            DataSet ds = _objBALBranch.Branch_GetData(Convert.ToInt32(BranchId));
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                hf_BranchId.Value = ds.Tables[0].Rows[0]["BranchId"].ToString();
-                txtBranchName.Text = ds.Tables[0].Rows[0]["BranchName"].ToString();
-
-                txtPhoneno.Text = ds.Tables[0].Rows[0]["BranchPhoneNo"].ToString();
-                txtAlternativeNo.Text = ds.Tables[0].Rows[0]["BranchAlternativeNo"].ToString();
-                txtEmail.Text = ds.Tables[0].Rows[0]["BranchEmail"].ToString();
-                txtPhysicalAddress.Text = ds.Tables[0].Rows[0]["BranchPhysicalAddress"].ToString();
-                txtPostalAddress.Text = ds.Tables[0].Rows[0]["BranchPostalAddress"].ToString();
-                chkcheckphysicaladdress.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["AddressFlag"]);
-
-                DDLCountry.SelectedIndex = DDLCountry.Items.IndexOf(DDLCountry.Items.FindByValue(ds.Tables[0].Rows[0]["BranchCountry"].ToString()));
-                DDLCountry_SelectedIndexChanged(null, null);
-                DDLProvince.SelectedIndex = DDLProvince.Items.IndexOf(DDLProvince.Items.FindByValue(ds.Tables[0].Rows[0]["BranchState"].ToString()));
-                DDLProvince_SelectedIndexChanged(null, null);
-                DDLCity.SelectedIndex = DDLCity.Items.IndexOf(DDLCity.Items.FindByValue(ds.Tables[0].Rows[0]["BranchCity"].ToString()));
-
-                txtCoRegNo.Text = ds.Tables[0].Rows[0]["BranchCoRegNo"].ToString();
-                txtIATARegNo.Text = ds.Tables[0].Rows[0]["BranchIATARegNo"].ToString();
-                txtVatRegNo.Text = ds.Tables[0].Rows[0]["BranchVatRegNo"].ToString();
-                txtDoCex.Text = ds.Tables[0].Rows[0]["BranchDoCex"].ToString();
-
-                txtBranchCode.Text = ds.Tables[0].Rows[0]["BranchCode"].ToString();
-                DDLCurrency.SelectedIndex = DDLCurrency.Items.IndexOf(DDLCurrency.Items.FindByValue(ds.Tables[0].Rows[0]["BranchCurrency"].ToString()));
-
-                chkMemberOfAsata.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["BranchMemberOfAsata"]);
-                chkIsactive.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["BranchIsActive"]);
-
-                lblLogo.Text = ds.Tables[0].Rows[0]["BranchLogo"].ToString();
-                hfImageLogo.Value = ds.Tables[0].Rows[0]["BranchlogoPath"].ToString();
-                FileLogo = ds.Tables[0].Rows[0]["BranchlogoPath"].ToString();
-                logoview.Attributes["href"] = "../Admin/CompanyLogos/" + FileLogo;
-
-
-                hf_ConfigurationId.Value = ds.Tables[0].Rows[0]["ConfigurationId"].ToString();
-                txtVatPercentage.Text = ds.Tables[0].Rows[0]["VatPercentage"].ToString();
-
-                txtInvStartNo.Text = ds.Tables[0].Rows[0]["InvStartNo"].ToString();
-                txtCreditNoteStartNo.Text = ds.Tables[0].Rows[0]["CreditNoteStartNo"].ToString();
-                chkZeroCommForSuppliers.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["ZeroCommForSuppliers"]);
-                chkConvertProInvToInv.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["ConvertProInvToInv"]);
-                chkServiceFeeMerge.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["ServiceFeeMerge"]);
-                chkIsSerFeeAddToAirportTax.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["IsSerFeeAddToAirportTax"]);
-                chkIsSerFeeMergePaymentMatch.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["IsSerFeeMergePaymentMatch"]);
-                txtPreFixDebtors.Text = ds.Tables[0].Rows[0]["PreFixDebtors"].ToString();
-                txtPreFixCorporates.Text = ds.Tables[0].Rows[0]["PreFixCorporates"].ToString();
-                txtPreFixLiesures.Text = ds.Tables[0].Rows[0]["PreFixLiesures"].ToString();
-                txtRoundingDecimal.Text = ds.Tables[0].Rows[0]["RoundingDecimal"].ToString();
-                txtSupplierMainAcNo.Text = ds.Tables[0].Rows[0]["SupplierMainAcNo"].ToString();
-                txtClientMainAcNo.Text = ds.Tables[0].Rows[0]["ClientMainAcNo"].ToString();
-            }
-        }
-        catch (Exception ex)
-        {
-
-            //lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
-        }
-
-    }
     private void InsertUpdateBranch()
     {
-        try
-        {
-            _objEMBranch.BranchId = Convert.ToInt32(hf_BranchId.Value);
-            _objEMBranch.BranchName = txtBranchName.Text;
-            // _objEMBranch.BranchLogo = txtbranch.Text;
-            _objEMBranch.BranchPhoneNo = txtPhoneno.Text;
-            _objEMBranch.BranchAlternativeNo = txtAlternativeNo.Text;
-            _objEMBranch.BranchEmail = txtEmail.Text;
-            _objEMBranch.BranchPhysicalAddress = txtPhysicalAddress.Text;
-            _objEMBranch.BranchPostalAddress = txtPostalAddress.Text;
-            _objEMBranch.BranchCountry = Convert.ToInt32(DDLCountry.SelectedValue);
-            _objEMBranch.BranchState = Convert.ToInt32(DDLProvince.SelectedValue);
-            _objEMBranch.BranchCity = Convert.ToInt32(DDLCity.SelectedValue);
+        _objEMBranch.BranchId = Convert.ToInt32(hf_BranchId.Value);
+        _objEMBranch.BranchName = txtBranchName.Text;
+       // _objEMBranch.BranchLogo = txtbranch.Text;
+        _objEMBranch.BranchPhoneNo = txtPhoneno.Text;
+        _objEMBranch.BranchAlternativeNo = txtAlternativeNo.Text;
+        _objEMBranch.BranchEmail = txtEmail.Text;
+        _objEMBranch.BranchPhysicalAddress =txtPhysicalAddress.Text;
+        _objEMBranch.BranchPostalAddress = txtPostalAddress.Text;
+        _objEMBranch.BranchCountry = Convert.ToInt32(DDLCountry.SelectedValue);
+        _objEMBranch.BranchState = Convert.ToInt32(DDLProvince.SelectedValue);
+        _objEMBranch.BranchCity = Convert.ToInt32(DDLCity.SelectedValue);
 
-            _objEMBranch.BranchCoRegNo = txtCoRegNo.Text;
-            _objEMBranch.BranchIATARegNo = txtIATARegNo.Text;
-            _objEMBranch.BranchVatRegNo = txtVatRegNo.Text;
-            _objEMBranch.BranchDoCex = txtDoCex.Text;
-            _objEMBranch.BranchMemberOfAsata = Convert.ToInt32(chkMemberOfAsata.Checked);
-            _objEMBranch.CompanyId = 1;
-            _objEMBranch.BranchCurrency = Convert.ToInt32(DDLCurrency.SelectedValue);
-            _objEMBranch.BranchIsActive = Convert.ToInt32(chkIsactive.Checked);
-            _objEMBranch.CreatedBy = 1;
-            _objEMBranch.BranchCode = txtBranchCode.Text;
+        _objEMBranch.BranchCoRegNo = txtCoRegNo.Text;
+        _objEMBranch.BranchIATARegNo = txtIATARegNo.Text;
+        _objEMBranch.BranchVatRegNo = txtVatRegNo.Text;
+        _objEMBranch.BranchDoCex = txtDoCex.Text;
+        _objEMBranch.BranchMemberOfAsata = Convert.ToInt32(chkMemberOfAsata.Checked);
+        _objEMBranch.CompanyId = 1;
+        _objEMBranch.BranchCurrency = Convert.ToInt32(DDLCurrency.SelectedValue);
+        _objEMBranch.BranchIsActive = Convert.ToInt32(chkIsactive.Checked);
+        _objEMBranch.CreatedBy = 1;
+        _objEMBranch.BranchCode = txtBranchCode.Text;
 
-            string filepath = string.Empty;
-            if (hfImageLogo.Value != "")
-            {
-                if (BranchLogoUpload.HasFile)
-                    lblLogo.Text = BranchLogoUpload.FileName;
-                else
-                    filepath = hfImageLogo.Value.ToString();
-            }
-            else
-                filepath = GetFile(BranchLogoUpload);
-
-            _objEMBranch.BranchLogo = lblLogo.Text;
-            _objEMBranch.BranchLogoPath = filepath;
-
-
-            int Result = _objBALBranch.InsUpdBranch(_objEMBranch);
+        int Result = _objDALBranch.InsUpdBranch(_objEMBranch);
 
 
 
-            if (Result > 0)
-            {
-                _objEMBranch.ConfigurationId = Convert.ToInt32(hf_ConfigurationId.Value);
-                _objEMBranch.VatPercentage = Convert.ToDecimal(txtVatPercentage.Text);
-                _objEMBranch.InvStartNo = Convert.ToInt32(txtInvStartNo.Text);
-                _objEMBranch.CreditNoteStartNo = Convert.ToInt32(txtCreditNoteStartNo.Text);
-                _objEMBranch.ZeroCommForSuppliers = Convert.ToInt32(chkZeroCommForSuppliers.Checked);
-                _objEMBranch.ConvertProInvToInv = Convert.ToInt32(chkConvertProInvToInv.Checked);
-                _objEMBranch.ServiceFeeMerge = Convert.ToInt32(chkServiceFeeMerge.Checked);
-                _objEMBranch.IsSerFeeAddToAirportTax = Convert.ToInt32(chkIsSerFeeAddToAirportTax.Checked);
-
-                _objEMBranch.IsSerFeeMergePaymentMatch = Convert.ToInt32(chkIsSerFeeMergePaymentMatch.Checked);
-                _objEMBranch.PreFixDebtors = txtPreFixDebtors.Text;
-                _objEMBranch.PreFixCorporates = txtPreFixCorporates.Text;
-                _objEMBranch.PreFixLiesures = txtPreFixLiesures.Text;
-                _objEMBranch.RoundingDecimal = txtRoundingDecimal.Text;
-
-                _objEMBranch.SupplierMainAcNo = txtSupplierMainAcNo.Text;
-                _objEMBranch.ClientMainAcNo = txtClientMainAcNo.Text;
-                _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
-                _objEMBranch.CreatedBy = 1;
-                int configResult = _objBALBranch.InsUpdConfiguration(_objEMBranch);
-                if (configResult > 0)
-                {
-                    Response.Redirect("BranchList.aspx");
-                }
-
-            }
-        }
-        catch (Exception ex)
+        if (Result > 0)
         {
             
-          
+            _objEMBranch.VatPercentage = Convert.ToDecimal(txtVatPercentage.Text);
+            _objEMBranch.InvStartNo = Convert.ToInt32(txtInvStartNo.Text);
+            _objEMBranch.CreditNoteStartNo = Convert.ToInt32(txtCreditNoteStartNo.Text);
+            _objEMBranch.ZeroCommForSuppliers = Convert.ToInt32(chkZeroCommForSuppliers.Checked);
+            _objEMBranch.ConvertProInvToInv = Convert.ToInt32(chkConvertProInvToInv.Checked);
+            _objEMBranch.ServiceFeeMerge = Convert.ToInt32(chkServiceFeeMerge.Checked);
+            _objEMBranch.IsSerFeeAddToAirportTax = Convert.ToInt32(chkIsSerFeeAddToAirportTax.Checked);
+
+            _objEMBranch.IsSerFeeMergePaymentMatch = Convert.ToInt32(chkIsSerFeeMergePaymentMatch.Checked);
+            _objEMBranch.PreFixDebtors = txtPreFixDebtors.Text;
+            _objEMBranch.PreFixCorporates = txtPreFixCorporates.Text;
+            _objEMBranch.PreFixLiesures = txtPreFixLiesures.Text;
+            _objEMBranch.RoundingDecimal = txtRoundingDecimal.Text;
+
+            _objEMBranch.SupplierMainAcNo = txtSupplierMainAcNo.Text;
+            _objEMBranch.ClientMainAcNo = txtClientMainAcNo.Text;
+            _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
+            _objEMBranch.CreatedBy = 1;
+           int configResult=  _objDALBranch.InsUpdConfiguration(_objEMBranch);
+          if (configResult > 0)
+          {
+
+          }
+
         }
     }
 
@@ -297,7 +190,7 @@ public partial class Admin_Branch : System.Web.UI.Page
     {
         try
         {
-
+            
             DataSet ds = _objBoutility.GetVatData();
             ViewState["txtVatPercentage"] = ds.Tables[0];
 
@@ -339,7 +232,6 @@ public partial class Admin_Branch : System.Web.UI.Page
                 DDLCountry.DataBind();
                 DDLCountry.Items.Insert(0, new ListItem("-- Please Select --", "0"));
 
-
             }
             else
             {
@@ -354,7 +246,7 @@ public partial class Admin_Branch : System.Web.UI.Page
             //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
             //ExceptionLogging.SendExcepToDB(ex);
         }
-    }
+  }
 
     private void BindCurrency()
     {
@@ -389,9 +281,6 @@ public partial class Admin_Branch : System.Web.UI.Page
     {
         try
         {
-
-            DDLProvince.Enabled = true;
-            rfvDDLProvince.Enabled = true;
             DDLProvince.Items.Clear();
             DDLCity.Items.Clear();
             DataSet ds = new DataSet();
@@ -426,13 +315,10 @@ public partial class Admin_Branch : System.Web.UI.Page
     {
         try
         {
-            DDLCity.Enabled = true;
-            rfvDDLCity.Enabled = true;
-
             DDLCity.Items.Clear();
             DataSet ds = new DataSet();
             int state_id = Convert.ToInt32(DDLProvince.SelectedValue.ToString());
-            ds = _objBoutility.GetCities(state_id);
+            ds = _objBoutility.GetCities(state_id);         
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DDLCity.DataSource = ds.Tables[0];
@@ -457,30 +343,6 @@ public partial class Admin_Branch : System.Web.UI.Page
         }
     }
 
-    private string GetFile(FileUpload FUName)
-    {
-        string fileName = string.Empty;
-        try
-        {
-           
-            if (FUName.HasFile)
-            {
-                string strPath = System.IO.Path.GetExtension(FUName.PostedFile.FileName);
-                string date = DateTime.Now.ToString("yyyyMMddhhmmssfff");
-                fileName = date + strPath;
-                FUName.SaveAs(Server.MapPath("~/Admin/CompanyLogos/" + fileName));
-                lblLogo.Text = BranchLogoUpload.FileName;
-            }
-           
-        }
-        catch (Exception ex)
-        {
-            
-           
-        }
-        return fileName;
-    }
-
     private void DefaultSeletedItems()
     {
         chkIsactive.Checked = true;
@@ -490,8 +352,13 @@ public partial class Admin_Branch : System.Web.UI.Page
         chkServiceFeeMerge.Checked = true;
         chkIsSerFeeMergePaymentMatch.Checked = true;
         chkIsSerFeeAddToAirportTax.Checked = true;
-    } 
-
-    #endregion
-  
+    }
+    protected void DDLCountry_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BindState();
+    }
+    protected void DDLProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BindCity();
+    }
 }

@@ -24,7 +24,7 @@ namespace BusinessManager
 
         #endregion
 
-       #region Country,State,City,Currency,Vat
+       #region Country,State,City
        public DataSet GetCountries()
        {
            return _objDOUtility.GetCountries();

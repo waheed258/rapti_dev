@@ -10,7 +10,6 @@ namespace EntityManager
        public int BranchId { get; set; }
        public string BranchName { get; set; }
        public string BranchLogo { get; set; }
-       public string BranchLogoPath { get; set; }
        public string BranchPhoneNo { get; set; }
        public string BranchAlternativeNo { get; set; }
        public string BranchEmail { get; set; }
@@ -19,7 +18,7 @@ namespace EntityManager
        public int BranchCountry { get; set; }
        public int BranchState { get; set; }
        public int BranchCity { get; set; }
-       public int AddressFlag { get; set; }
+
        public string BranchCoRegNo { get; set; }
        public string BranchIATARegNo { get; set; }
        public string BranchVatRegNo { get; set; }

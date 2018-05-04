@@ -21,7 +21,7 @@
                     </legend>
                     <asp:HiddenField ID="hf_BranchId" runat="server" Value="0" />
                      <asp:HiddenField ID="hf_ConfigurationId" runat="server" Value="0" />
-                      <asp:HiddenField ID="hfImageLogo" runat="server" />
+
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="col-sm-2">
@@ -141,10 +141,10 @@
                                 </label>
                             </div>
                             <div class="col-sm-4">
-                                <asp:DropDownList ID="DDLCountry"  AutoPostBack="true" OnSelectedIndexChanged="DDLCountry_SelectedIndexChanged" runat="server" CssClass="form-control">
+                                <asp:DropDownList ID="DDLCountry" AutoPostBack="true" OnSelectedIndexChanged="DDLCountry_SelectedIndexChanged" runat="server" CssClass="form-control">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ControlToValidate="DDLCountry" runat="server" ID="rfvDDLCountry" ValidationGroup="branch"
-                                    ErrorMessage="Please Select Country" Text="Please Select Country" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0" />
+                                    ErrorMessage="Please Select Country" Text="Please Select Country" class="validationred" Display="Dynamic" ForeColor="Red" />
 
                             </div>
 
@@ -157,7 +157,7 @@
                                 <asp:DropDownList ID="DDLProvince" OnSelectedIndexChanged="DDLProvince_SelectedIndexChanged" AutoPostBack="true" runat="server" CssClass="form-control">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ControlToValidate="DDLProvince" runat="server" ID="rfvDDLProvince" ValidationGroup="branch"
-                                    ErrorMessage="Please Select Province" Text="Please Select Province" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0" />
+                                    ErrorMessage="Please Select Province" Text="Please Select Province" class="validationred" Display="Dynamic" ForeColor="Red" />
 
 
                             </div>
@@ -175,7 +175,7 @@
                                 <asp:DropDownList ID="DDLCity" runat="server" CssClass="form-control">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ControlToValidate="DDLCity" runat="server" ID="rfvDDLCity" ValidationGroup="branch"
-                                    ErrorMessage="Please Select City" Text="Please Select City" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0" />
+                                    ErrorMessage="Please Select City" Text="Please Select City" class="validationred" Display="Dynamic" ForeColor="Red" />
 
 
                             </div>
@@ -253,7 +253,7 @@
                                 </asp:DropDownList>
 
                                 <asp:RequiredFieldValidator ControlToValidate="DDLCurrency" runat="server" ID="rfvDDLCurrency" ValidationGroup="branch"
-                                    ErrorMessage="Please Currency" Text="Please Select Currency" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0"/>
+                                    ErrorMessage="Please Select Currency" Text="Please Select Currency" class="validationred" Display="Dynamic" ForeColor="Red" />
 
 
                             </div>
@@ -272,11 +272,14 @@
                             </div>
                             <div class="col-sm-4 ">
 
-                              <asp:FileUpload ID="BranchLogoUpload" runat="server" />
-                             <a id="logoview" href="#" runat="server">
-                            <asp:Label ID="lblLogo" runat="server" /></a>
-                            <%--<asp:RequiredFieldValidator ControlToValidate="BranchLogoUpload" runat="server" ID="rfvBranchLogoUpload" ValidationGroup="branch"
-                                ErrorMessage="uploade Logo" SetFocusOnError="true" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                <div class="input-group">
+                                    <label class="input-group-btn">
+                                        <span class="btn btn-primary">Browse&hellip;
+                                <input type="file" runat="server" style="display: none;">
+                                        </span>
+                                    </label>
+                                    <input type="text" runat="server" class="form-control input-group-text" readonly>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -301,12 +304,12 @@
                                 <asp:TextBox ID="txtVatPercentage" runat="server" CssClass="form-control" MaxLength="30" />
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <label>
                                     Invoice Starting No(<span class="style1">*</span>)
                                 </label>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <asp:TextBox ID="txtInvStartNo" runat="server" CssClass="form-control" MaxLength="50" />
                                 <asp:RequiredFieldValidator ControlToValidate="txtInvStartNo" runat="server" ID="rfvtxtInvStartNo" ValidationGroup="branch"
                                     ErrorMessage="Enter Invoice Starting No" Text="Enter Invoice Starting No" class="validationred" Display="Dynamic" ForeColor="Red" />
