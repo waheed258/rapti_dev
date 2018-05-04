@@ -16,16 +16,96 @@ public partial class Admin_BranchList : System.Web.UI.Page
     EMBranch objEMBranch = new EMBranch();
     BALBranch objBALBranch = new BALBranch();
    // BOUtiltiy _BOUtility = new BOUtiltiy();
+
+    #region Events
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             ViewState["ps"] = 10;
             BindBranchList();
-      
+
         }
     }
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Branch.aspx", false);
+    }
+    protected void gvBranchList_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var ToolTipString = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "BranchIsActive"));
 
+            foreach (TableCell cell in e.Row.Cells)
+            {
+                if (ToolTipString == "0")
+                {
+                    // cell.BackColor = Color.Red;
+                    cell.ForeColor = Color.Red;
+                }
+            }
+        }
+    }
+    protected void gvBranchList_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        try
+        {
+            ViewState["se"] = e.SortExpression;
+            if (ViewState["so"] == null)
+                ViewState["so"] = "ASC";
+            if (ViewState["so"].ToString() == "ASC")
+                ViewState["so"] = "DESC";
+            else
+                ViewState["so"] = "ASC";
+            BindBranchList();
+        }
+        catch (Exception ex)
+        {
+            //    lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
+            //    ExceptionLogging.SendExcepToDB(ex);
+        }
+    }
+    protected void gvBranchList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvBranchList.PageIndex = e.NewPageIndex;
+        //  BindAirSupplierList();
+        SearchItemFromList(txtSearch.Text.Trim());
+    }
+    protected void imgsearch_Click(object sender, ImageClickEventArgs e)
+    {
+        SearchItemFromList(txtSearch.Text.Trim());
+    }
+    protected void DropPage_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ViewState["ps"] = DropPage.SelectedItem.ToString().Trim();
+        //  BindAirSupplierList();
+        SearchItemFromList(txtSearch.Text.Trim());
+    }
+    protected void gvBranchList_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+
+        string[] commandArgs = e.CommandArgument.ToString().Split(new char[] { ',' });
+        string BranchId = commandArgs[0];
+        string ConfigId = commandArgs[1];
+
+
+        if (e.CommandName == "Edit Branch")
+        {
+
+            Response.Redirect("Branch.aspx?BranchId= " + Convert.ToInt32(BranchId) + "&ConfigId=" + Convert.ToInt32(ConfigId), true);
+        }
+        else if (e.CommandName == "Delete Branch")
+        {
+
+            DeleteBranch(Convert.ToInt32(BranchId), Convert.ToInt32(ConfigId));
+            BindBranchList();
+        }
+    }
+    
+    #endregion
+
+    #region PrivateMethods
     private void BindBranchList()
     {
 
@@ -66,72 +146,11 @@ public partial class Admin_BranchList : System.Web.UI.Page
             //ExceptionLogging.SendExcepToDB(ex);
         }
     }
-
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Branch.aspx", false);
-    }
-    protected void gvBranchList_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            var ToolTipString = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "IsActive"));
-
-            foreach (TableCell cell in e.Row.Cells)
-            {
-                if (ToolTipString == "1")
-                {
-                    // cell.BackColor = Color.Red;
-                    cell.ForeColor = Color.Red;
-                }
-            }
-        }
-    }
-    protected void gvBranchList_Sorting(object sender, GridViewSortEventArgs e)
+    private void DeleteBranch(int BranchId, int ConfigurationId)
     {
         try
         {
-            ViewState["se"] = e.SortExpression;
-            if (ViewState["so"] == null)
-                ViewState["so"] = "ASC";
-            if (ViewState["so"].ToString() == "ASC")
-                ViewState["so"] = "DESC";
-            else
-                ViewState["so"] = "ASC";
-            BindBranchList();
-        }
-        catch (Exception ex)
-        {
-        //    lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-        //    ExceptionLogging.SendExcepToDB(ex);
-        }
-    }
-    protected void gvBranchList_PageIndexChanging(object sender, GridViewPageEventArgs e)
-    {
-        gvBranchList.PageIndex = e.NewPageIndex;
-        //  BindAirSupplierList();
-        SearchItemFromList(txtSearch.Text.Trim());
-    }
-    protected void gvBranchList_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        string BranchId = e.CommandArgument.ToString();
-        if (e.CommandName == "Edit Branch Details")
-        {
-
-            Response.Redirect("Branch.aspx?BranchId=" + Convert.ToInt32(BranchId), true);
-        }
-        else if (e.CommandName == "Delete Branch Details")
-        {
-
-            DeleteBranch(Convert.ToInt32(BranchId));
-            BindBranchList();
-        }
-    }
-    private void DeleteBranch(int BranchId)
-    {
-        try
-        {
-           // int Result = objBAConsultant.DeleteConsultant(ConsultantId);
+            int Result = objBALBranch.DeleteBranchandConfiguration(BranchId, ConfigurationId);
         }
         catch (Exception ex)
         {
@@ -140,8 +159,6 @@ public partial class Admin_BranchList : System.Web.UI.Page
             //ExceptionLogging.SendExcepToDB(ex);
         }
     }
-
-
     void SearchItemFromList(string SearchText)
     {
         try
@@ -178,18 +195,7 @@ public partial class Admin_BranchList : System.Web.UI.Page
             //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
             //ExceptionLogging.SendExcepToDB(ex);
         }
-    }
+    } 
 
-
-
-    protected void imgsearch_Click(object sender, ImageClickEventArgs e)
-    {
-        SearchItemFromList(txtSearch.Text.Trim());
-    }
-    protected void DropPage_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        ViewState["ps"] = DropPage.SelectedItem.ToString().Trim();
-        //  BindAirSupplierList();
-        SearchItemFromList(txtSearch.Text.Trim());
-    }
+    #endregion
 }

@@ -18,7 +18,7 @@ namespace EntityManager
        public int BranchCountry { get; set; }
        public int BranchState { get; set; }
        public int BranchCity { get; set; }
-
+       public int AddressFlag { get; set; }
        public string BranchCoRegNo { get; set; }
        public string BranchIATARegNo { get; set; }
        public string BranchVatRegNo { get; set; }

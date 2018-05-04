@@ -1,24 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/UserMaster.master" AutoEventWireup="true" CodeFile="BranchList.aspx.cs"EnableEventValidation="false"  Inherits="Admin_BranchList" %>
 
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-          <h4 class="page-header" style="margin: -4px;">New Branch</h4>
+          <h4 class="page-header" style="margin: -4px;">Branch List</h4>
         <div class="panel-body">
             <div class="form-horizontal">
-             <%--     <asp:UpdatePanel ID="UpdateSearch" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>--%>
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+                  <asp:UpdatePanel ID="UpdateSearch" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
                 <asp:Label ID="lblMsg" runat="server"></asp:Label>
                 <section class="panel">
-                    <header class="panel-heading">
-                        <div class="panel-actions">
-                            <a href="#" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
-                        </div>
-
-                        <h2 class="panel-title" runat="server">Branch List</h2>
-                    </header>
+                   
                     <div class="panel-body">
 
                         <div class="row">
@@ -67,6 +62,8 @@
                         &nbsp;
 
                 <asp:HiddenField ID="hf_BranchId" runat="server" Value="0" />
+                   
+
                         <asp:GridView ID="gvBranchList" runat="server" AllowPaging="true" EmptyDataText="No Data Found" PageSize="10"
                             AutoGenerateColumns="False" CssClass="table table-bordered table-striped mb-none dataTable no-footer" OnRowDataBound="gvBranchList_RowDataBound"
                             Width="100%" OnRowCommand="gvBranchList_RowCommand" OnPageIndexChanging="gvBranchList_PageIndexChanging" OnSorting="gvBranchList_Sorting">
@@ -80,6 +77,12 @@
                                 <asp:TemplateField HeaderText="Branch Name">
                                     <ItemTemplate>
                                         <%#Eval("BranchName")%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                
+                                <asp:TemplateField HeaderText="Active">
+                                    <ItemTemplate>
+                                        <%#Eval("BranchIsActive")%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 
@@ -120,9 +123,9 @@
                                             <tr></tr>
                                             <td>
                                                 <asp:ImageButton ID="imgEdit" ToolTip="Edit" runat="server" ImageUrl="../Images/icon-edit.png" Height="20" Width="20"
-                                                    CommandName="Edit Supplier" CommandArgument='<%#Eval("BranchId") %>' />
+                                                    CommandName="Edit Branch" CommandArgument='<%#Eval("BranchId")+","+ Eval("ConfigurationId")%>'/>
                                                 <asp:ImageButton ID="imgDelete" ToolTip="Delete" runat="server" ImageUrl="../Images/icon-delete.png" Height="20" Width="20"
-                                                    CommandName="Delete Supplier" CommandArgument='<%#Eval("BranchId") %>' OnClientClick="javascript:return confirm('Are You Sure To Delete AirSupplier Details')" />
+                                                    CommandName="Delete Branch" CommandArgument='<%#Eval("BranchId")+","+ Eval("ConfigurationId")%>' OnClientClick="javascript:return confirm('Are You Sure To Delete AirSupplier Details')" />
 
                                             </td>
                                         </table>
@@ -137,8 +140,8 @@
                     </div>
 
                 </section>
-           <%-- </ContentTemplate>
-        </asp:UpdatePanel>--%>
+            </ContentTemplate>
+        </asp:UpdatePanel>
                 </div>
             </div>
     

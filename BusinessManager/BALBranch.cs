@@ -25,5 +25,12 @@ namespace BusinessManager
        {
            return objDALBranch.Get_BranchData(BranchId);
        }
+
+       public int DeleteBranchandConfiguration(int BranchId, int ConfigurationId)
+       {
+           return objDALBranch.DeleteBranchandConfiguration(BranchId, ConfigurationId);
+       }
+
+
     }
 }
