@@ -58,7 +58,78 @@ namespace DataManager
         }
 
         #endregion
+        #region UserList
+        // added by Anitha on 02/05/2018
+        public DataSet GetUserList(int UserId, int CompanyId, int BranchId)
+        {
+            Hashtable htParams = new Hashtable
+                                            {
+                                                {"inUserId",UserId},
+                                                {"@inCompanyId",CompanyId},
+                                                 {"@inBranchId",BranchId}
+                                                 
+                                            };
+            return ExecuteDataSet("UserMaster_Get", htParams);
+        }
+        #endregion
 
+        #region RolesList
+        // added by Anitha on 02/05/2018
+        public DataSet GetRolesList(int CompanyId, int BranchId)
+        {
+            Hashtable htParams = new Hashtable
+                                            {
+                                               
+                                                {"@inCompanyId",CompanyId},
+                                                 {"@inBranchId",BranchId}
+                                                 
+                                            };
+            return ExecuteDataSet("RolesMaster_Get", htParams);
+        }
+        #endregion
+
+        #region MenusList and Update Menus As per Role
+        // added by Anitha on 02/05/2018
+        public DataSet GetMenusList(int RoleId)
+        {
+            Hashtable htParams = new Hashtable
+                                            {
+                                               
+                                                {"@inRoleId",RoleId}
+                                                
+                                                 
+                                            };
+            return ExecuteDataSet("MenuAccess_Get", htParams);
+        }
+        public int MenuAccessUpdate(int RoleId, int isAccessId, int MenuId, int MenuAccessId)
+        {
+            Hashtable htParams = new Hashtable
+                                            {
+                                               
+                                                 {"@inRoleId",RoleId},
+                                                 {"@inIsAccessId",isAccessId},
+                                                 {"@inMenuId",MenuId},
+                                                 {"@inMenuAccessId",MenuAccessId}
+                                                
+                                                 
+                                            };
+            return ExecuteNonQuery("MenuAccess_Update", htParams);
+        }
+        #endregion
+
+        #region Assign Role to user
+        //added by anitha on 05/05/2018
+        public int ManageUserRole(int UserId, int RoleId)
+        {
+            Hashtable htParams = new Hashtable
+                                     {
+                                         {"@UserId",UserId},
+                                         {"@RoleId",RoleId},
+                                          
+                                     };
+            return ExecuteNonQuery("UserMaster_Assign_Role", htParams);
+        }
+        #endregion
 
     }
 }

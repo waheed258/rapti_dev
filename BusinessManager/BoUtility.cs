@@ -50,5 +50,53 @@ namespace BusinessManager
 
        #endregion
 
+       #region UserList
+       // added by Anitha on 05/02/2018
+
+       //check in again
+       public DataSet GetUserList(int userId, int CompanyId, int BranchId)
+       {
+           return _objDOUtility.GetUserList(userId, CompanyId, BranchId);
+       }
+
+       #endregion
+
+
+       #region RolesList
+       // added by Anitha on 05/02/2018
+
+       //check in again
+       public DataSet GetRolesList(int CompanyId, int BranchId)
+       {
+           return _objDOUtility.GetRolesList(CompanyId, BranchId);
+       }
+
+       #endregion
+
+
+       #region MenusList,Menus Update
+       // added by Anitha on 02/05/2018
+
+       //check in again
+       public DataSet GetMenusList(int RoleId)
+       {
+           return _objDOUtility.GetMenusList(RoleId);
+       }
+
+       //added by anitha on 04/05/2018
+       public int MenusAccessUpdate(int RoleId, int IsAccessId, int MenuId, int MenuAccessId)
+       {
+           return _objDOUtility.MenuAccessUpdate(RoleId, IsAccessId, MenuId, MenuAccessId);
+       }
+       #endregion
+       //added by anitha on 5/5/2018
+       #region Assign Role to user
+       public int ManageUserRole(int UserId, int RoleId)
+       {
+           return _objDOUtility.ManageUserRole(UserId, RoleId);
+       }
+       #endregion
+
+
     }
 }
