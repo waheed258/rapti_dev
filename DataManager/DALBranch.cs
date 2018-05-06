@@ -17,11 +17,13 @@ namespace DataManager
                                                 {"@BranchId",objBranch.BranchId},
                                                 {"@BranchName",objBranch.BranchName},
                                                 {"@BranchLogo",objBranch.BranchLogo},
+                                                 {"@BranchlogoPath",objBranch.BranchLogoPath},
                                                 {"@BranchPhoneNo",objBranch.BranchPhoneNo},
                                                 {"@BranchAlternativeNo",objBranch.BranchAlternativeNo},
                                                 {"@BranchEmail",objBranch.BranchEmail},
                                                 {"@BranchPhysicalAddress",objBranch.BranchPhysicalAddress},
                                                 {"@BranchPostalAddress",objBranch.BranchPostalAddress},
+                                                {"@AddressFlag",objBranch.AddressFlag},
                                                 {"@BranchCountry",objBranch.BranchCountry},
                                                 {"@BranchState",objBranch.BranchState},
                                                 {"@BranchCity",objBranch.BranchCity},
@@ -83,5 +85,18 @@ namespace DataManager
                                             };
            return ExecuteDataSet("Branch_GetData",htparams);
        }
+
+       public int DeleteBranchandConfiguration(int BranchId,int ConfigurationId)
+       {
+           Hashtable htparams = new Hashtable
+           {
+             {"@BranchId",BranchId},
+             {"@ConfigurationId",ConfigurationId}
+           };
+
+           return ExecuteNonQuery("BranchandConfiguration_Delete", htparams);
+
+       }
+
     }
 }
