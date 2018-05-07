@@ -463,7 +463,7 @@ public partial class Admin_Branch : System.Web.UI.Page
     private void clearcontrols()
     {
         txtBranchName.Text = "";
-        chkIsactive.Checked = false;
+        
         txtBranchCode.Text = "";
         txtPhoneno.Text = "";
         txtAlternativeNo.Text = "";

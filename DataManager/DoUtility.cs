@@ -133,6 +133,7 @@ namespace DataManager
         #endregion
 
         #region CheckAccCodes Exit or Not
+        //added by mounika on 07/05/2018
         public DataSet CheckAccCode_ExistorNot(string AccountCode, string type)
         {
             Hashtable htparams = new Hashtable

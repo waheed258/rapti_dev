@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -81,5 +82,8 @@ namespace BusinessManager
           return decimalAmount.ToString(string.Format("0.{0}", new string('0', countOfDecimalPlace)));
       }
       #endregion
+
+
+      
   }
 }

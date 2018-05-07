@@ -131,6 +131,7 @@ public partial class Admin_BranchList : System.Web.UI.Page
                 }
 
                 gvBranchList.DataBind();
+                gvBranchList.Columns[1].Visible = false;
             }
 
             else
@@ -198,4 +199,5 @@ public partial class Admin_BranchList : System.Web.UI.Page
     //}
 
     #endregion
+  
 }

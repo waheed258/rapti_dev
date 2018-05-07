@@ -1,92 +1,76 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/UserMaster.master" AutoEventWireup="true" CodeFile="BranchList.aspx.cs" EnableEventValidation="false" Inherits="Admin_BranchList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/UserMaster.master" AutoEventWireup="true" CodeFile="UserList.aspx.cs" Inherits="Admin_UserList" %>
 
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <asp:ScriptManager ID="scr1" runat="server"></asp:ScriptManager>
+      <asp:ScriptManager ID="scr1" runat="server"></asp:ScriptManager>
     <div id="content-header">
         <div id="breadcrumb">
             <a href="Index.aspx" class="tip-bottom" data-original-title="Go to Home"><i class="icon-home"></i>Home</a>
-            <a href="#" class="current">Branch List</a><a href="Branch.aspx">Add</a>
+            <a href="#" class="current">User List</a><a href="User.aspx">Add</a>
         </div>
 
     </div>
-    <!--End-breadcrumbs-->
+
+     <!--End-breadcrumbs-->
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
                 <div class="widget-box">
                     <div class="widget-title">
                         <span class="icon"><i class="icon-align-justify"></i></span>
-                        <h5>Branch List</h5>
+                        <h5>User List</h5>
                     </div>
-                    <asp:Label ID="lblMsg" runat="server"></asp:Label>
+                      <asp:Label ID="lblMsg" runat="server"></asp:Label>
+
                     <asp:UpdatePanel ID="uplist" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="widget-content">
                                 <div class="widget-content nopadding">
-                                    <asp:HiddenField ID="hf_BranchId" runat="server" Value="0" />
+                                    <asp:HiddenField ID="hf_ChartofAccId" runat="server" Value="0" />
 
-                                    <asp:GridView ID="gvBranchList" runat="server" AllowPaging="true" Width="100%" PageSize="10" OnRowCommand="gvBranchList_RowCommand"
-                                        AutoGenerateColumns="False" DataKeyNames="" OnRowDataBound="gvBranchList_RowDataBound" CssClass="table table-bordered data-table"
+                                    <asp:GridView ID="gvUserList" runat="server" AllowPaging="true" Width="100%" PageSize="10" OnRowCommand="gvUserList_RowCommand"
+                                        AutoGenerateColumns="False" DataKeyNames="" OnRowDataBound="gvUserList_RowDataBound" CssClass="table table-bordered data-table"
                                         ShowHeaderWhenEmpty="true">
                                         <PagerStyle BackColor="#efefef" ForeColor="black" HorizontalAlign="Left" />
                                         <Columns>
 
-                                            <asp:TemplateField HeaderText="Branch Name">
+                                            <asp:TemplateField HeaderText="User Name">
                                                 <ItemTemplate>
-                                                    <%#Eval("BranchName")%>
+                                                    <%#Eval("UserName")%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Active">
+                           
+                                            <asp:TemplateField HeaderText="User Email">
                                                 <ItemTemplate>
-                                                    <%#Eval("BranchIsActive")%>
+                                                    <%#Eval("UserEmail")%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Branch Code">
+                                            <asp:TemplateField HeaderText="Role">
                                                 <ItemTemplate>
-                                                    <%#Eval("BranchCode")%>
+                                                    <%#Eval("RoleName")%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Email">
+                                               <asp:TemplateField HeaderText="IsActive" >
                                                 <ItemTemplate>
-                                                    <%#Eval("BranchEmail")%>
+                                                    <%#Eval("IsActive")%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Co Reg No">
-                                                <ItemTemplate>
-                                                    <%#Eval("BranchCoRegNo")%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-
-
-                                            <asp:TemplateField HeaderText="Vat Reg No">
-                                                <ItemTemplate>
-                                                    <%#Eval("BranchVatRegNo")%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Country">
-                                                <ItemTemplate>
-                                                    <%#Eval("CountryName")%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                  
                                             <asp:TemplateField HeaderText="Actions">
                                                 <ItemTemplate>
                                                     <table>
                                                         <tr></tr>
                                                         <td>
                                                             <asp:ImageButton ID="imgEdit" ToolTip="Edit" runat="server" ImageUrl="../Images/icon-edit.png" Height="20" Width="20"
-                                                                CommandName="Edit Branch" CommandArgument='<%#Eval("BranchId")+","+ Eval("ConfigurationId")%>' />
+                                                                CommandName="Edit User" CommandArgument='<%#Eval("UserId")%>' />
                                                             <asp:ImageButton ID="imgDelete" ToolTip="Delete" runat="server" ImageUrl="../Images/icon-delete.png" Height="20" Width="20"
-                                                                CommandName="Delete Branch" CommandArgument='<%#Eval("BranchId")+","+ Eval("ConfigurationId")%>' OnClientClick="javascript:return confirm('Are You Sure To Delete AirSupplier Details')" />
+                                                                CommandName="Delete User" CommandArgument='<%#Eval("UserId")%>' OnClientClick="javascript:return confirm('Are You Sure To Delete AirSupplier Details')" />
 
                                                         </td>
                                                     </table>
@@ -106,15 +90,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 
 
 </asp:Content>
