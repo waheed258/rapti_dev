@@ -58,6 +58,7 @@ namespace DataManager
         }
 
         #endregion
+
         #region UserList
         // added by Anitha on 02/05/2018
         public DataSet GetUserList(int UserId, int CompanyId, int BranchId)
@@ -129,6 +130,21 @@ namespace DataManager
                                      };
             return ExecuteNonQuery("UserMaster_Assign_Role", htParams);
         }
+        #endregion
+
+        #region CheckAccCodes Exit or Not
+        public DataSet CheckAccCode_ExistorNot(string AccountCode, string type)
+        {
+            Hashtable htparams = new Hashtable
+           {
+             {"@AccountCode",AccountCode},
+              {"@Type",type}
+           };
+
+            return ExecuteDataSet("AccCode_ExistorNot", htparams);
+
+        }
+        
         #endregion
 
     }

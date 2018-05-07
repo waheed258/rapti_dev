@@ -97,6 +97,12 @@ namespace BusinessManager
        }
        #endregion
 
+       #region CheckAccCodes Exit or Not
+       public DataSet CheckAccCode_ExistorNot(string AccountCode, string type)
+       {
+           return _objDOUtility.CheckAccCode_ExistorNot(AccountCode, type);
+       } 
+       #endregion
 
     }
 }
