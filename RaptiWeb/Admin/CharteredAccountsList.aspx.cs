@@ -6,10 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessManager;
 using System.Data;
+using DataManager;
 
 public partial class Admin_CharteredAccountsList : System.Web.UI.Page
 {
     BALCharteredAccounts objBALChartoffAcc = new BALCharteredAccounts();
+    BALGlobal objBALglobal = new BALGlobal();
 
     #region Events
     protected void Page_Load(object sender, EventArgs e)
@@ -46,7 +48,8 @@ public partial class Admin_CharteredAccountsList : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
 
         }
     }

@@ -15,7 +15,7 @@ public partial class Admin_BranchList : System.Web.UI.Page
 
     EMBranch objEMBranch = new EMBranch();
     BALBranch objBALBranch = new BALBranch();
-    // BOUtiltiy _BOUtility = new BOUtiltiy();
+    BALGlobal objBALglobal = new BALGlobal();
 
     #region Events
     protected void Page_Load(object sender, EventArgs e)
@@ -62,8 +62,8 @@ public partial class Admin_BranchList : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //    lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-            //    ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     protected void gvBranchList_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -142,8 +142,8 @@ public partial class Admin_BranchList : System.Web.UI.Page
 
         catch (Exception ex)
         {
-            //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     private void DeleteBranch(int BranchId, int ConfigurationId)
@@ -155,8 +155,8 @@ public partial class Admin_BranchList : System.Web.UI.Page
         catch (Exception ex)
         {
 
-            //lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     //void SearchItemFromList(string SearchText)

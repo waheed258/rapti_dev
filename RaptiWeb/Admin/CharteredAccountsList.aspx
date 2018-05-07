@@ -21,6 +21,8 @@
                         <span class="icon"><i class="icon-align-justify"></i></span>
                         <h5>Chartered Accounts List</h5>
                     </div>
+                      <asp:Label ID="lblMsg" runat="server"></asp:Label>
+
                     <asp:UpdatePanel ID="uplist" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="widget-content">

@@ -45,7 +45,6 @@ namespace DataManager
            return IsSuccess;
        }
 
-
        public int InsUpdConfiguration(EMBranch objBranch)
        {
            Hashtable htparams = new Hashtable

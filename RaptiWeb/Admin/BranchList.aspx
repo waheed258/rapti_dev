@@ -22,6 +22,7 @@
                         <span class="icon"><i class="icon-align-justify"></i></span>
                         <h5>Branch List</h5>
                     </div>
+                      <asp:Label ID="lblMsg" runat="server"></asp:Label>
                     <asp:UpdatePanel ID="uplist" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="widget-content">
@@ -36,7 +37,7 @@
 
                                             <asp:TemplateField HeaderText="Branch Name">
                                                 <ItemTemplate>
-                                                    <%#Eval("BranchName")%>
+                                                    <%#Eval("BranchNam")%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

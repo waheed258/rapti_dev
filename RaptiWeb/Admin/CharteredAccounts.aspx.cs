@@ -7,14 +7,15 @@ using System.Web.UI.WebControls;
 using BusinessManager;
 using EntityManager;
 using System.Data;
-
+using DataManager;
 public partial class Admin_CharteredAccounts : System.Web.UI.Page
 {
     BALCharteredAccounts objBALChartofAcc = new BALCharteredAccounts();
     EMCharteredAccounts objEMChartofAcc = new EMCharteredAccounts();
     BALMainAccounts objBALMainAccount = new BALMainAccounts();
     BoUtility objBOutility = new BoUtility();
-    BALGlobal objglobal = new BALGlobal();
+    BALGlobal objBALglobal = new BALGlobal();
+   
 
     #region Events
     protected void Page_Load(object sender, EventArgs e)
@@ -42,8 +43,8 @@ public partial class Admin_CharteredAccounts : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            
-            throw;
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     protected void txtChartofAcc_TextChanged(object sender, EventArgs e)
@@ -65,9 +66,9 @@ public partial class Admin_CharteredAccounts : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-          
-            lblMsg.Text = objglobal.ShowMessage("danger", "Danger", ex.Message);
-         //   ExceptionLogging.SendExcepToDB(ex);
+
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     protected void Submit_ChartofAcc_Click(object sender, EventArgs e)
@@ -76,7 +77,7 @@ public partial class Admin_CharteredAccounts : System.Web.UI.Page
     }
     protected void Cancel_ChartofAcc_Click(object sender, EventArgs e)
     {
-        Response.Redirect("CharteredAccountsList.aspx");
+        Response.Redirect("CharteredAccountsList.aspx",false);
     }
     protected void Reset_ChartofAcc_Click(object sender, EventArgs e)
     {
@@ -110,8 +111,8 @@ public partial class Admin_CharteredAccounts : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            
-            throw;
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     private void InsertUpdateChartofAccount()
@@ -140,8 +141,8 @@ public partial class Admin_CharteredAccounts : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            
-           
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
 
     }

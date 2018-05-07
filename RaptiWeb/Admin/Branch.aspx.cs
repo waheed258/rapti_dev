@@ -14,6 +14,7 @@ public partial class Admin_Branch : System.Web.UI.Page
     BoUtility _objBoutility = new BoUtility();
     EMBranch _objEMBranch = new EMBranch();
     BALBranch _objBALBranch = new BALBranch();
+    BALGlobal objBALglobal = new BALGlobal();
     public string FileLogo = string.Empty;
 
     #region Events
@@ -97,38 +98,7 @@ public partial class Admin_Branch : System.Web.UI.Page
     }
     protected void Reset_Branch_Click(object sender, EventArgs e)
     {
-        txtBranchName.Text = "";
-        chkIsactive.Checked = false;
-        txtBranchCode.Text = "";
-        txtPhoneno.Text = "";
-        txtAlternativeNo.Text = "";
-        txtEmail.Text = "";
-        txtPhysicalAddress.Text = "";
-        chkcheckphysicaladdress.Checked = false;
-        txtPostalAddress.Text = "";
-        DDLCountry.SelectedIndex = 0;
-        DDLProvince.SelectedIndex = 0;
-        DDLCity.SelectedIndex = 0;
-        DDLCurrency.SelectedIndex = 0;
-        txtCoRegNo.Text = "";
-        txtDoCex.Text = "";
-        txtIATARegNo.Text = "";
-        txtVatRegNo.Text = "";
-        chkMemberOfAsata.Checked = false;
-        txtVatPercentage.Text = "";
-        txtInvStartNo.Text = "";
-        txtCreditNoteStartNo.Text = "";
-        chkZeroCommForSuppliers.Checked = false;
-        chkConvertProInvToInv.Checked = false;
-        chkServiceFeeMerge.Checked = false;
-        chkIsSerFeeAddToAirportTax.Checked = false;
-        chkIsSerFeeMergePaymentMatch.Checked = false;
-        txtPreFixCorporates.Text = "";
-        txtPreFixDebtors.Text = "";
-        txtPreFixLiesures.Text = "";
-        txtRoundingDecimal.Text = "";
-        txtSupplierMainAcNo.Text = "";
-        txtClientMainAcNo.Text = "";
+        clearcontrols();
 
     }
     protected void DDLCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -206,8 +176,8 @@ public partial class Admin_Branch : System.Web.UI.Page
         catch (Exception ex)
         {
 
-            //lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
 
     }
@@ -289,10 +259,10 @@ public partial class Admin_Branch : System.Web.UI.Page
         catch (Exception ex)
         {
 
-
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
-
     private void BindVatType()
     {
         try
@@ -320,8 +290,8 @@ public partial class Admin_Branch : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     private void BindCountries()
@@ -351,8 +321,8 @@ public partial class Admin_Branch : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
 
@@ -381,8 +351,8 @@ public partial class Admin_Branch : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
     private void BindState()
@@ -417,11 +387,10 @@ public partial class Admin_Branch : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
-
     private void BindCity()
     {
         try
@@ -452,11 +421,10 @@ public partial class Admin_Branch : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //lblMsg.Text = _BOUtility.ShowMessage("danger", "Danger", ex.Message);
-            //ExceptionLogging.SendExcepToDB(ex);
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
     }
-
     private string GetFile(FileUpload FUName)
     {
         string fileName = string.Empty;
@@ -476,11 +444,11 @@ public partial class Admin_Branch : System.Web.UI.Page
         catch (Exception ex)
         {
 
-
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
         }
         return fileName;
     }
-
     private void DefaultSeletedItems()
     {
         chkIsactive.Checked = true;
@@ -490,6 +458,43 @@ public partial class Admin_Branch : System.Web.UI.Page
         chkServiceFeeMerge.Checked = true;
         chkIsSerFeeMergePaymentMatch.Checked = true;
         chkIsSerFeeAddToAirportTax.Checked = true;
+    }
+
+    private void clearcontrols()
+    {
+        txtBranchName.Text = "";
+        chkIsactive.Checked = false;
+        txtBranchCode.Text = "";
+        txtPhoneno.Text = "";
+        txtAlternativeNo.Text = "";
+        txtEmail.Text = "";
+        txtPhysicalAddress.Text = "";
+        chkcheckphysicaladdress.Checked = false;
+        txtPostalAddress.Text = "";
+        DDLCountry.SelectedIndex = 0;
+        DDLProvince.SelectedIndex = 0;
+        DDLCity.SelectedIndex = 0;
+        DDLCurrency.SelectedIndex = 0;
+        txtCoRegNo.Text = "";
+        txtDoCex.Text = "";
+        txtIATARegNo.Text = "";
+        txtVatRegNo.Text = "";
+        chkMemberOfAsata.Checked = false;
+        txtVatPercentage.Text = "";
+        txtInvStartNo.Text = "";
+        txtCreditNoteStartNo.Text = "";
+        chkZeroCommForSuppliers.Checked = false;
+        chkConvertProInvToInv.Checked = false;
+        chkServiceFeeMerge.Checked = false;
+        chkIsSerFeeAddToAirportTax.Checked = false;
+        chkIsSerFeeMergePaymentMatch.Checked = false;
+        txtPreFixCorporates.Text = "";
+        txtPreFixDebtors.Text = "";
+        txtPreFixLiesures.Text = "";
+        txtRoundingDecimal.Text = "";
+        txtSupplierMainAcNo.Text = "";
+        txtClientMainAcNo.Text = "";
+
     }
 
     #endregion
