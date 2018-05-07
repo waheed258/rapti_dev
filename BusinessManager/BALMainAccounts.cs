@@ -15,9 +15,9 @@ namespace BusinessManager
         {
             return _objDALMainAccount.InsertMainAccount(objEMMainAccount);
         }
-        public DataSet MainAccountsList()
+        public DataSet MainAccountsList(int mainAccId)
         {
-            return _objDALMainAccount.MainAccountsList();
+            return _objDALMainAccount.MainAccountsList(mainAccId);
         }
     }
 }

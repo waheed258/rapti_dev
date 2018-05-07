@@ -28,10 +28,13 @@ namespace DataManager
         }
 
 
-        public DataSet MainAccountsList()
+        public DataSet MainAccountsList(int MainAccId)
         {
+            Hashtable htparams = new Hashtable{
+                {"@AccId",MainAccId}
+            };
 
-            return ExecuteDataSet("MainAccounts_List");
+            return ExecuteDataSet("MainAccounts_List",htparams);
         }
     }
 }

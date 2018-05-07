@@ -20,8 +20,8 @@ public partial class Admin_MainAccountsList : System.Web.UI.Page
     public void MainAccountsList()
     {
 
-
-        DataSet ds = ObjBALMainAccounts.MainAccountsList();
+        int mainAccId = 0;
+        DataSet ds = ObjBALMainAccounts.MainAccountsList(mainAccId);
         GvMainAccounts.DataSource = ds.Tables[0];
         GvMainAccounts.DataBind();
     }
