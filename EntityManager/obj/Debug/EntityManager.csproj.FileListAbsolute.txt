@@ -7,4 +7,3 @@ E:\Rapti_Dev\Rapti_Solution\EntityManager\bin\Debug\EntityManager.dll
 E:\Rapti_Dev\Rapti_Solution\EntityManager\bin\Debug\EntityManager.pdb
 E:\Rapti_Dev\Rapti_Solution\EntityManager\obj\Debug\EntityManager.dll
 E:\Rapti_Dev\Rapti_Solution\EntityManager\obj\Debug\EntityManager.pdb
-E:\Rapti_Dev\Rapti_Solution\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache

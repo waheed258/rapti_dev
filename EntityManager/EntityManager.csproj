@@ -42,7 +42,9 @@
     <Compile Include="EMBranch.cs" />
     <Compile Include="EMCitiesMaster.cs" />
     <Compile Include="EMCompany.cs" />
+    <Compile Include="EMConsultant.cs" />
     <Compile Include="EMCountries.cs" />
+    <Compile Include="EMMainAccounts.cs" />
     <Compile Include="EMState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="DALBranch.cs" />
     <Compile Include="DALCompany.cs" />
+    <Compile Include="DALConsultant.cs" />
+    <Compile Include="DALMainAccounts.cs" />
     <Compile Include="DataUtility.cs" />
     <Compile Include="DoUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

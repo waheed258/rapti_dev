@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="controls controls-row">
-                            <label class="span2 m-wrap">Company Name</label>
+                            <label class="span2 m-wrap">Company Name (<span class="mandatory">*</span>)</label>
                             <div class="span3 m-wrap">
 
                                 <asp:TextBox ID="txtCompanyName" runat="server" CssClass="form-control" MaxLength="30" placeholder="Company Name" />
@@ -46,7 +46,7 @@
 
                             </div>
                             <div class="span1 m-wrap"></div>
-                            <label class="span2 m-wrap">Company Logo </label>
+                            <label class="span2 m-wrap">Company Logo (<span class="mandatory">*</span>)</label>
                             <div class="span3 m-wrap">
 
                                 <asp:FileUpload ID="CompanyLogoUpload" runat="server" />
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="controls controls-row">
-                            <label class="span2 m-wrap">Email</label>
+                            <label class="span2 m-wrap">Email (<span class="mandatory">*</span>)</label>
                             <div class="span3 m-wrap">
 
                                 <asp:TextBox ID="txtEmailId" runat="server" CssClass="form-control" MaxLength="30" placeholder=" Company Email ID" />
@@ -94,16 +94,16 @@
                             </div>
                         </div>
                         <div class="controls controls-row">
-                            <label class="span2 m-wrap">Country</label>
+                            <label class="span2 m-wrap">Country (<span class="mandatory">*</span>)</label>
                             <div class="span3 m-wrap">
                                 <asp:DropDownList ID="DDLCountry" runat="server" CssClass="form-control" OnSelectedIndexChanged="DDLCountry_SelectedIndexChanged" AutoPostBack="true">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ControlToValidate="DDLCountry" runat="server" ID="rfvDDLCountry" ValidationGroup="Company"
-                                    ErrorMessage="Select Country" Display="Dynamic" InitialValue="0" ForeColor="Red" />
+                                    ErrorMessage="Select Country" Display="Dynamic" InitialValue="-1" ForeColor="Red" />
 
                             </div>
                             <div class="span1 m-wrap"></div>
-                            <label class="span2 m-wrap">State</label>
+                            <label class="span2 m-wrap">State (<span class="mandatory">*</span>)</label>
                             <div class="span3 m-wrap">
                                 <asp:DropDownList ID="DDLProvince" runat="server" CssClass="form-control" OnSelectedIndexChanged="DDLProvince_SelectedIndexChanged" AutoPostBack="true">
                                 </asp:DropDownList>
@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="controls controls-row">
-                            <label class="span2 m-wrap">City</label>
+                            <label class="span2 m-wrap">City (<span class="mandatory">*</span>)</label>
                             <div class="span3 m-wrap">
 
                                 <asp:DropDownList ID="DDLCity" runat="server" CssClass="form-control">
@@ -122,7 +122,7 @@
                                     ErrorMessage="Select City" Display="Dynamic" InitialValue="-1" ForeColor="Red" />
                             </div>
                             <div class="span1 m-wrap"></div>
-                            <label class="span2 m-wrap">Currency</label>
+                            <label class="span2 m-wrap">Currency (<span class="mandatory">*</span>)</label>
                             <div class="span3 m-wrap">
                                 <asp:DropDownList ID="DDLCurrency" runat="server" CssClass="form-control">
                                 </asp:DropDownList>
@@ -130,8 +130,6 @@
                                     ErrorMessage="Select City" Display="Dynamic" InitialValue="-1" ForeColor="Red" />
                             </div>
                         </div>
-
-
                         <div class="form-actions">
                             <div class="span5 m-wrap"></div>
                             <div class="span4 m-wrap">
