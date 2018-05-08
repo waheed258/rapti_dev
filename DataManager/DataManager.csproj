@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,9 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALBranch.cs" />
+    <Compile Include="DALCharteredAccounts.cs" />
     <Compile Include="DALCompany.cs" />
     <Compile Include="DALConsultant.cs" />
+    <Compile Include="DALGlobal.cs" />
     <Compile Include="DALMainAccounts.cs" />
+    <Compile Include="DALReceiptType.cs" />
+    <Compile Include="DALUser.cs" />
     <Compile Include="DataUtility.cs" />
     <Compile Include="DoUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

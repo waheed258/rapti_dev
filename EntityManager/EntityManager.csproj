@@ -40,12 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EMBranch.cs" />
+    <Compile Include="EMCharteredAccounts.cs" />
     <Compile Include="EMCitiesMaster.cs" />
     <Compile Include="EMCompany.cs" />
     <Compile Include="EMConsultant.cs" />
     <Compile Include="EMCountries.cs" />
     <Compile Include="EMMainAccounts.cs" />
+    <Compile Include="EMReceiptType.cs" />
     <Compile Include="EMState.cs" />
+    <Compile Include="EMUser.cs" />
+    <Compile Include="EMVatType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

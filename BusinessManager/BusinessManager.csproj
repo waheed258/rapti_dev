@@ -40,8 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BALBranch.cs" />
+    <Compile Include="BALCharteredAccounts.cs" />
     <Compile Include="BALConsultant.cs" />
+    <Compile Include="BALGlobal.cs" />
     <Compile Include="BALMainAccounts.cs" />
+    <Compile Include="BALReceiptType.cs" />
+    <Compile Include="BALUser.cs" />
     <Compile Include="BoUtility.cs" />
     <Compile Include="BALCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
