@@ -32,6 +32,7 @@
                             <asp:Label ID="lblMsg" runat="server"></asp:Label>
                             <asp:HiddenField ID="hf_BranchId" runat="server" Value="0" />
                      <asp:HiddenField ID="hf_ConfigurationId" runat="server" Value="0" />
+                            <asp:HiddenField ID="hf_MainAccId" runat="server" Value="0" />
                       <asp:HiddenField ID="hfImageLogo" runat="server" />
 
                         </div>
@@ -277,7 +278,7 @@
                             </div>
                             <div class="span2 m-wrap"></div>
                             <label class="span2 m-wrap">PreFixCorporates(<span class="style1">*</span>)</label>
-                            <div class="span3 m-wrap">
+                            <div class="span2 m-wrap">
                                 <asp:TextBox ID="txtPreFixCorporates" runat="server" MaxLength="2" CssClass="form-control" />
 
                                 <asp:RequiredFieldValidator ControlToValidate="txtPreFixCorporates" runat="server" ID="rfvtxtPreFixCorporates" ValidationGroup="branch"
@@ -300,7 +301,7 @@
                             </div>
                             <div class="span2 m-wrap"></div>
                             <label class="span2 m-wrap">Rounding Decimal(<span class="style1">*</span>)</label>
-                            <div class="span3 m-wrap">
+                            <div class="span2 m-wrap">
                                 <asp:TextBox ID="txtRoundingDecimal" runat="server" MaxLength="5" CssClass="form-control" />
 
                                 <asp:RequiredFieldValidator ControlToValidate="txtRoundingDecimal" runat="server" ID="rfvtxtRoundingDecimal" ValidationGroup="branch"
@@ -312,19 +313,68 @@
                         <div class="controls controls-row">
                             <label class="span2 m-wrap">SupplierMainAcNo(<span class="style1">*</span>)</label>
                             <div class="span2 m-wrap">
-                                <asp:TextBox ID="txtSupplierMainAcNo" runat="server" MaxLength="5" CssClass="form-control" />
-
+                                <asp:TextBox ID="txtSupplierMainAcNo" runat="server" MaxLength="5" CssClass="form-control" 
+                                    OnTextChanged="txtSupplierMainAcNo_TextChanged" AutoPostBack="true" />
+                                 <asp:Label ID="lblchecksupplacccode" runat="server"></asp:Label>
                                 <asp:RequiredFieldValidator ControlToValidate="txtSupplierMainAcNo" runat="server" ID="rfvtxtSupplierMainAcNo" ValidationGroup="branch"
                                     ErrorMessage="Enter Supplier MainAcc No" Text="Enter Supplier MainAcc No" class="validationred" Display="Dynamic" ForeColor="Red" />
 
                             </div>
                             <div class="span2 m-wrap"></div>
+                            <label class="span2 m-wrap">SupplierMainAcName(<span class="style1">*</span>)</label>
+                            <div class="span2 m-wrap">
+                              <asp:TextBox ID="txtSupplierMainAccName" runat="server"  CssClass="form-control" />
+
+                                <asp:RequiredFieldValidator ControlToValidate="txtSupplierMainAccName" runat="server" ID="rfvtxtSupplierMainAccName" ValidationGroup="branch"
+                                    ErrorMessage="Enter Supplier MainAcc Name" Text="Enter Supplier MainAcc Name" class="validationred" Display="Dynamic" ForeColor="Red" />
+   
+                            </div>
+                        </div>
+
+                        <div class="controls controls-row">
+                            <label class="span2 m-wrap">Supplier Account Type(<span class="style1">*</span>)</label>
+                            <div class="span2 m-wrap">
+                                 <asp:DropDownList ID="DDLSupplierMainAccType" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="-1" Text="Item 1"></asp:ListItem>
+                                    <asp:ListItem Value="0" Text="Item 2"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text="Item 3"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="Item 4"></asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ControlToValidate="DDLSupplierMainAccType" runat="server" ID="rfvDDLSupplierMainAccType" ValidationGroup="branch"
+                                    ErrorMessage="Select Supplier MainAccount Type" Text="Select Supplier MainAccount Type" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0" />
+
+                            </div>
+                            <div class="span2 m-wrap"></div>
                             <label class="span2 m-wrap">ClientMainAcNo(<span class="style1">*</span>)</label>
-                            <div class="span3 m-wrap">
-                                <asp:TextBox ID="txtClientMainAcNo" runat="server" MaxLength="5" CssClass="form-control" />
+                            <div class="span2 m-wrap">
+                                <asp:TextBox ID="txtClientMainAcNo" runat="server" MaxLength="5" AutoPostBack="true" CssClass="form-control"  OnTextChanged="txtClientMainAcNo_TextChanged"/>
+                                 <asp:Label ID="lblcheckclientacccode" runat="server"></asp:Label>
 
                                 <asp:RequiredFieldValidator ControlToValidate="txtClientMainAcNo" runat="server" ID="rfvtxtClientMainAcNo" ValidationGroup="branch"
                                     ErrorMessage="Enter Client MainAcc No" Text="Enter Client MainAcc No" class="validationred" Display="Dynamic" ForeColor="Red" />
+
+                            </div>
+                        </div>
+
+                        <div class="controls controls-row">
+                            <label class="span2 m-wrap">Client MainAcName(<span class="style1">*</span>)</label>
+                            <div class="span2 m-wrap">
+                               <asp:TextBox ID="txtClientmainAccName" runat="server"  CssClass="form-control" />
+                                <asp:RequiredFieldValidator ControlToValidate="txtClientmainAccName" runat="server" ID="rfvtxtClientmainAccName" ValidationGroup="branch"
+                                    ErrorMessage="Enter Client MainAcc Name" Text="Enter Client MainAcc Name" class="validationred" Display="Dynamic" ForeColor="Red"  />
+
+                            </div>
+                            <div class="span2 m-wrap"></div>
+                            <label class="span2 m-wrap">Client Account Type(<span class="style1">*</span>)</label>
+                            <div class="span2 m-wrap">
+                               <asp:DropDownList ID="DDLClientaccType" runat="server" CssClass="form-control">
+                                      <asp:ListItem Value="-1" Text="Item 1"></asp:ListItem>
+                                    <asp:ListItem Value="0" Text="Item 2"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text="Item 3"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="Item 4"></asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ControlToValidate="DDLClientaccType" runat="server" ID="rfvDDLClientaccType" ValidationGroup="branch"
+                                    ErrorMessage="Select Client MainAccount Type" Text="Select Client MainAccount Type" class="validationred" Display="Dynamic" ForeColor="Red"  InitialValue="0"/>
 
                             </div>
                         </div>

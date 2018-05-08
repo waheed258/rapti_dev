@@ -16,6 +16,8 @@ public partial class Admin_Branch : System.Web.UI.Page
     BALBranch _objBALBranch = new BALBranch();
     BALGlobal objBALglobal = new BALGlobal();
     public string FileLogo = string.Empty;
+    EMMainAccounts objEMMainAccount = new EMMainAccounts();
+    BALMainAccounts objBALMainAcc = new BALMainAccounts();
 
     #region Events
     protected void Page_Load(object sender, EventArgs e)
@@ -108,6 +110,56 @@ public partial class Admin_Branch : System.Web.UI.Page
     protected void DDLProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
         BindCity();
+    }
+
+    protected void txtSupplierMainAcNo_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            lblchecksupplacccode.Text = "";
+            DataSet ds = _objBoutility.CheckAccCode_ExistorNot(txtSupplierMainAcNo.Text, "MainAcc");
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                lblchecksupplacccode.Text = "Alredy Exist";
+                lblchecksupplacccode.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                lblchecksupplacccode.Text = "Available";
+                lblchecksupplacccode.ForeColor = System.Drawing.Color.DarkBlue;
+            }
+        }
+        catch (Exception ex)
+        {
+
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
+        }
+    }
+    protected void txtClientMainAcNo_TextChanged(object sender, EventArgs e)
+    {
+
+        try
+        {
+            lblcheckclientacccode.Text = "";
+            DataSet ds = _objBoutility.CheckAccCode_ExistorNot(txtClientMainAcNo.Text, "MainAcc");
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                lblcheckclientacccode.Text = "Alredy Exist";
+                lblcheckclientacccode.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                lblcheckclientacccode.Text = "Available";
+                lblcheckclientacccode.ForeColor = System.Drawing.Color.DarkBlue;
+            }
+        }
+        catch (Exception ex)
+        {
+
+            lblMsg.Text = objBALglobal.ShowMessage("danger", "Danger", ex.Message);
+            DALGlobal.SendExcepToDB(ex);
+        }
     }
 
     #endregion
@@ -249,9 +301,33 @@ public partial class Admin_Branch : System.Web.UI.Page
                 _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
                 _objEMBranch.CreatedBy = 1;
                 int configResult = _objBALBranch.InsUpdConfiguration(_objEMBranch);
+
                 if (configResult > 0)
                 {
-                    Response.Redirect("BranchList.aspx");
+
+                    objEMMainAccount.MainAccountId = Convert.ToInt32(hf_MainAccId.Value);
+                    objEMMainAccount.MainAccountName = txtSupplierMainAccName.Text;
+                    objEMMainAccount.MainAccountCode = txtSupplierMainAcNo.Text;
+                    objEMMainAccount.AccountType=Convert.ToInt32(DDLSupplierMainAccType.SelectedItem.Value);
+                    objEMMainAccount.Branch = Result;
+                    objEMMainAccount.Company = 1;
+                    int suppMainAcc = objBALMainAcc.InsertMainAaccounts(objEMMainAccount);
+
+                    if (suppMainAcc > 0)
+                    {
+                        objEMMainAccount.MainAccountId = Convert.ToInt32(hf_MainAccId.Value);
+                        objEMMainAccount.MainAccountName = txtClientmainAccName.Text;
+                        objEMMainAccount.MainAccountCode = txtClientMainAcNo.Text;
+                        objEMMainAccount.AccountType = Convert.ToInt32(DDLClientaccType.SelectedItem.Value);
+                        objEMMainAccount.Branch = Result;
+                        objEMMainAccount.Company = 1;
+                        int clientMainAcc = objBALMainAcc.InsertMainAaccounts(objEMMainAccount);
+                        if (clientMainAcc > 0)
+                        {
+                            Response.Redirect("BranchList.aspx");
+                        }
+                    }
+                 
                 }
 
             }
@@ -549,4 +625,5 @@ public partial class Admin_Branch : System.Web.UI.Page
             return false;
         }
     }
+
 }
