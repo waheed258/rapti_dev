@@ -16,5 +16,7 @@ namespace EntityManager
         public int CompanyId { get; set; }
         public int BranchId { get; set; }
         public int CreatedBy { get; set; }
+       //added by anitha on 10/05/2018
+        public string password { get; set; }
     }
 }

@@ -148,5 +148,24 @@ namespace DataManager
         
         #endregion
 
+        #region User Login
+        //added by mounika on 10/05/2018
+        public DataSet User_Login(string UserName, string Passowrd)
+        {
+            Hashtable htparams = new Hashtable
+           {
+             {"@InUserId",UserName},
+              {"@InPassword",Passowrd},
+              //{"@InCompnayId",compnayId},
+              //{"@BranchId",BranchId},
+
+           };
+
+            return ExecuteDataSet("User_Login", htparams);
+
+        }
+
+        #endregion
+
     }
 }
