@@ -145,7 +145,15 @@ namespace DataManager
             return ExecuteDataSet("AccCode_ExistorNot", htparams);
 
         }
-        
+
+        #endregion
+
+        #region CashBookType
+        // added by Mounika on 10/05/2018
+        public DataSet GetTransactionAction()
+        {
+            return ExecuteDataSet("TransactionAction_Getdata");
+        }
         #endregion
 
         #region User Login
