@@ -8,7 +8,7 @@
     <div id="content-header">
         <div id="breadcrumb">
             <a href="Index.aspx" class="tip-bottom" data-original-title="Go to Home"><i class="icon-home"></i>Home</a>
-            <a href="#" class="current">Branch List</a><a href="CashBookType.aspx">Add</a>
+            <a href="#" class="current">Cash Book Type List</a><a href="CashBookType.aspx">Add</a>
         </div>
 
     </div>
@@ -35,7 +35,7 @@
                         <ContentTemplate>
                             <div class="widget-title">
                                 <span class="icon" style="color: white;"><i class="icon-align-justify"></i></span>
-                                <h5>Intake List</h5>
+                                <h5>Cash Book Type  List</h5>
                             </div>
 
                             <div class="widget-content">
