@@ -104,5 +104,13 @@ namespace BusinessManager
        } 
        #endregion
 
+       #region User Login Check
+       //added by anitha on 10/5/2018
+       public DataSet User_Login(string UserName, string Password)
+       {
+           return _objDOUtility.User_Login(UserName, Password);
+       }
+       #endregion
+
     }
 }
