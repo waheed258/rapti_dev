@@ -98,10 +98,19 @@ namespace BusinessManager
         #endregion
 
         #region CheckAccCodes Exit or Not
+        //added by Mounika on 7/5/2018
         public DataSet CheckAccCode_ExistorNot(string AccountCode, string type)
         {
             return _objDOUtility.CheckAccCode_ExistorNot(AccountCode, type);
         }
+        #endregion
+
+        #region Cash Book Type
+        //added by Mounika on 10/05/2018
+        public DataSet GetTransactionAction()
+        {
+            return _objDOUtility.GetTransactionAction();
+        } 
         #endregion
 
         #region User Login Check
