@@ -23,6 +23,7 @@
     <%--<link rel="stylesheet" href="<%: ResolveUrl("~/Content/Css/UserMasterCss/font-awesome.css") %>">--%>
     <link rel="stylesheet" href="<%: ResolveUrl("~/Scripts/font-awesome/css/font-awesome.min.css") %>">
     <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Css/UserMasterCss/jquery.gritter.css") %>">
+     <link rel="stylesheet" href="<%: ResolveUrl("~/Content/Css/UserMasterCss/paging-style.css") %>">
     <!-- endinject -->
     <%--<link href="../Content/Css/UserMasterCss/font-awesome.css" rel="stylesheet" />
     <link href="../Scripts/font-awesome/css/font-awesome.css" rel="stylesheet" />--%>
