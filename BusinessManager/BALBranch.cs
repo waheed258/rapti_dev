@@ -30,7 +30,10 @@ namespace BusinessManager
        {
            return objDALBranch.DeleteBranchandConfiguration(BranchId, ConfigurationId);
        }
-
+       public int InsUpdClientTypeMaster(EMClientTypeMaster objClient)
+       {
+           return objDALBranch.InsUpdClientTypeMaster(objClient);
+       }
 
     }
 }

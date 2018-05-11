@@ -8,11 +8,11 @@ using System.Data;
 
 namespace DataManager
 {
-   public class DALBranch:DataUtility
+    public class DALBranch : DataUtility
     {
-       public int InsUpdBranch(EMBranch objBranch)
-       {
-           Hashtable htparams = new Hashtable
+        public int InsUpdBranch(EMBranch objBranch)
+        {
+            Hashtable htparams = new Hashtable
                                             {
                                                 {"@BranchId",objBranch.BranchId},
                                                 {"@BranchName",objBranch.BranchName},
@@ -32,6 +32,12 @@ namespace DataManager
                                                 {"@BranchVatRegNo",objBranch.BranchVatRegNo},
                                                 {"@BranchDoCex",objBranch.BranchDoCex},
                                                 {"@BranchMemberOfAsata",objBranch.BranchMemberOfAsata},
+                                                {"@SupplierMainAcNo",objBranch.SupplierMainAcNo},
+                                                {"@SupplMainAccountName",objBranch.SupplMainAccountName},
+                                                {"@SupplAcountType",objBranch.SupplAcountType},
+                                                {"@ClientMainAcNo",objBranch.ClientMainAcNo},
+                                                {"@ClientMainAccountName",objBranch.ClientMainAccountName},
+                                                {"@ClientAcountType",objBranch.ClientAcountType},
                                                 {"@CompanyId",objBranch.CompanyId},
                                                 {"@CreatedBy",objBranch.CreatedBy},
                                                 {"@BranchCurrency",objBranch.BranchCurrency},
@@ -41,13 +47,13 @@ namespace DataManager
                                               
                                           };
 
-           int IsSuccess = ExecuteNonQuery("Branch_InsertUpdate", htparams, "@return");
-           return IsSuccess;
-       }
+            int IsSuccess = ExecuteNonQuery("Branch_InsertUpdate", htparams, "@return");
+            return IsSuccess;
+        }
 
-       public int InsUpdConfiguration(EMBranch objBranch)
-       {
-           Hashtable htparams = new Hashtable
+        public int InsUpdConfiguration(EMBranch objBranch)
+        {
+            Hashtable htparams = new Hashtable
                                             {
                                                 {"@ConfigurationId",objBranch.ConfigurationId},
                                                 {"@VatPercentage",objBranch.VatPercentage},
@@ -72,30 +78,45 @@ namespace DataManager
                                               
                                           };
 
-           int IsSuccess = ExecuteNonQuery("Configuration_InsertUpdate", htparams);
-           return IsSuccess;
-       }
+            int IsSuccess = ExecuteNonQuery("Configuration_InsertUpdate", htparams);
+            return IsSuccess;
+        }
 
-       public DataSet Get_BranchData(int BranchId)
-       {
-           Hashtable htparams = new Hashtable
+        public DataSet Get_BranchData(int BranchId)
+        {
+            Hashtable htparams = new Hashtable
                                             {
                                                 {"@BranchId",BranchId},
                                             };
-           return ExecuteDataSet("Branch_GetData",htparams);
-       }
+            return ExecuteDataSet("Branch_GetData", htparams);
+        }
 
-       public int DeleteBranchandConfiguration(int BranchId,int ConfigurationId)
-       {
-           Hashtable htparams = new Hashtable
+        public int DeleteBranchandConfiguration(int BranchId, int ConfigurationId)
+        {
+            Hashtable htparams = new Hashtable
            {
              {"@BranchId",BranchId},
              {"@ConfigurationId",ConfigurationId}
            };
 
-           return ExecuteNonQuery("BranchandConfiguration_Delete", htparams);
+            return ExecuteNonQuery("BranchandConfiguration_Delete", htparams);
 
-       }
+        }
 
+        public int InsUpdClientTypeMaster(EMClientTypeMaster objClient)
+        {
+            Hashtable htparams = new Hashtable
+                                            {
+                                                {"@ClientTypeId",objClient.ClientTypeId},
+                                                {"@Name",objClient.Name},
+                                                {"@Code",objClient.Code},
+                                                 {"@CompanyId",objClient.CompanyId},
+                                                {"@BranchId",objClient.BranchId},
+                                                {"@CreatedBy",objClient.CreatedBy},
+                                               
+                                            };
+            int IsSuccess = ExecuteNonQuery("ClienttypeMaster_InsertUpdate", htparams);
+            return IsSuccess;
+        }
     }
 }

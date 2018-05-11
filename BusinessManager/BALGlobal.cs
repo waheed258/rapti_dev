@@ -25,52 +25,99 @@ namespace BusinessManager
     #endregion
       //added by anitha on 05/05/2018
       #region encrypt and decrypt methods 
+      //changed by mounika encrypt to encrypts same decrypt to decrypts of old method
      
-      public string Decrypt(string EncryptedText)
+      public string Decrypts(string cipherString, bool useHashing)
       {
-          byte[] inputByteArray = new byte[EncryptedText.Length + 1];
-          byte[] rgbIV = { 0x21, 0x43, 0x56, 0x87, 0x10, 0xfd, 0xea, 0x1c };
-          byte[] key = { };
+          //space replace to "+" 
+          cipherString = cipherString.Replace(" ", "+");
 
+          byte[] keyArray;
+          byte[] toEncryptArray = Convert.FromBase64String(cipherString);
+
+          //System.Configuration.AppSettingsReader settingsReader = new AppSettingsReader();
+          //Get your key from config file to open the lock!
+          string key = "dinoosys@!@#";
+
+          if (useHashing)
+          {
+              MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+              keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+              hashmd5.Clear();
+          }
+          else
+              keyArray = UTF8Encoding.UTF8.GetBytes(key);
+
+          TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+          tdes.Key = keyArray;
+          tdes.Mode = CipherMode.ECB;
+          tdes.Padding = PaddingMode.PKCS7;
+
+          ICryptoTransform cTransform = tdes.CreateDecryptor();
+          byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+
+          tdes.Clear();
+          return UTF8Encoding.UTF8.GetString(resultArray);
+          string ResultString = string.Empty;
           try
           {
-              key = System.Text.Encoding.UTF8.GetBytes("McaMCAMA");
-              DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-              inputByteArray = Convert.FromBase64String(EncryptedText);
-              MemoryStream ms = new MemoryStream();
-              CryptoStream cs = new CryptoStream(ms, des.CreateDecryptor(key, rgbIV), CryptoStreamMode.Write);
-              cs.Write(inputByteArray, 0, inputByteArray.Length);
-              cs.FlushFinalBlock();
-              System.Text.Encoding encoding = System.Text.Encoding.UTF8;
-              return encoding.GetString(ms.ToArray());
+              System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
+              System.Text.Decoder utf8Decode = encoder.GetDecoder();
+              byte[] todecode_byte = Convert.FromBase64String(cipherString);
+              int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
+              char[] decoded_char = new char[charCount];
+              utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+              ResultString = new String(decoded_char);
           }
-          catch (Exception e)
+          catch (Exception ex)
           {
-              return e.Message;
+              throw new Exception("invalid result.");
           }
+          return ResultString;
       }
 
-
-      public string Encrypt(string stringToEncrypt)
+      public string Encrypts(string toEncrypt, bool useHashing)
       {
-          byte[] inputByteArray = Encoding.UTF8.GetBytes(stringToEncrypt);
-          byte[] rgbIV = { 0x21, 0x43, 0x56, 0x87, 0x10, 0xfd, 0xea, 0x1c };
-          byte[] key = { };
+          byte[] keyArray;
+          byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
+
+          //System.Configuration.AppSettingsReader settingsReader = new AppSettingsReader();
+          // Get the key from config file
+          string key = "dinoosys@!@#";
+          //System.Windows.Forms.MessageBox.Show(key);
+          if (useHashing)
+          {
+              MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+              keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+              hashmd5.Clear();
+          }
+          else
+              keyArray = UTF8Encoding.UTF8.GetBytes(key);
+
+          TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+          tdes.Key = keyArray;
+          tdes.Mode = CipherMode.ECB;
+          tdes.Padding = PaddingMode.PKCS7;
+
+          ICryptoTransform cTransform = tdes.CreateEncryptor();
+          byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+          tdes.Clear();
+          return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+
+          string ResultString = string.Empty;
           try
           {
-              key = System.Text.Encoding.UTF8.GetBytes("McaMCAMA");
-              DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-              MemoryStream ms = new MemoryStream();
-              CryptoStream cs = new CryptoStream(ms, des.CreateEncryptor(key, rgbIV), CryptoStreamMode.Write);
-              cs.Write(inputByteArray, 0, inputByteArray.Length);
-              cs.FlushFinalBlock();
-              return Convert.ToBase64String(ms.ToArray());
+              byte[] encData_byte = new byte[toEncrypt.Length];
+              encData_byte = System.Text.Encoding.UTF8.GetBytes(toEncrypt);
+              ResultString = Convert.ToBase64String(encData_byte);
           }
-          catch (Exception e)
+          catch (Exception ex)
           {
-              return e.Message;
+              throw new Exception("Unable to encrypt.");
           }
+          return ResultString;
       }
+
       #endregion
 
       //  added by anitha on 05/05/2018

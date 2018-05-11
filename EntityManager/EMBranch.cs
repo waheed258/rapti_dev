@@ -47,9 +47,20 @@ namespace EntityManager
         public string PreFixLiesures { get; set; }
         public string RoundingDecimal { get; set; }
         public string SupplierMainAcNo { get; set; }
-
+        public string SupplMainAccountName { get; set; }
+        public string ClientMainAccountName { get; set; }
         public string ClientMainAcNo { get; set; }
-     
-
+         public int ClientAcountType { get; set; }
+        public int SupplAcountType { get; set; }
     }
+
+   public class EMClientTypeMaster
+   {
+       public int ClientTypeId { get; set; }
+       public string Code { get; set; }
+       public string Name { get; set; }
+       public int CompanyId { get; set; }
+       public int BranchId { get; set; }
+       public int CreatedBy { get; set; }
+   }
 }
