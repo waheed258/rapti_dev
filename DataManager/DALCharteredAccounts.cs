@@ -1,41 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using EntityManager;
+using System.Threading.Tasks;
+using DataManager;
 using System.Collections;
-using System.Data;
+using EntityManager;
 
 namespace DataManager
 {
-    public class DALCharteredAccounts : DataUtility
+    public class DALCharteredAccounts : DataUtilities
     {
+      public DataSet BindMasterAcNames()
+      {
 
-        public int InsUpdChartOfAccounta(EMCharteredAccounts objChartofAcc)
-        {
-            Hashtable htparams = new Hashtable
-                                            {
-                                                {"@ChartedAccId",objChartofAcc.ChartedAccId},
-                                                {"@ChartedAccName",objChartofAcc.ChartedAccName},
-                                                {"@ChartedMasterAccId",objChartofAcc.ChartedMasterAccId},
-                                                {"@ChartofAccCode",objChartofAcc.ChartofAccCode},
-                                                {"@MainAccCode",objChartofAcc.MainAccCode},
-                                                {"@CategoryId",objChartofAcc.CategoryId},
-                                                {"@CompanyId",objChartofAcc.CompanyId},
-                                                {"@BranchId",objChartofAcc.BranchId},
-                                                {"@CreatedBy",objChartofAcc.CreatedBy}
-                                          
-                                              
-                                          };
+          return ExecuteDataSet("MasterAccounts_GetMasterAcNames");
+      }
 
-            int IsSuccess = ExecuteNonQuery("CharteredAccounts_InsertUpdate", htparams);
-            return IsSuccess;
-        }
+      public DataSet BindMasterTypeandAccountCode(int MasteAccId)
+      {
+          Hashtable htParams = new Hashtable
+                                     {
+                                       
+                                         {"@MasterAccountId",MasteAccId}
+                                     };
+          return ExecuteDataSet("MasterAccounts_getMasterAccountCodeandType",htParams);
+      }
 
-        public DataSet Get_ChartofAccData()
-        {
+     
+      public int CharteredAccountInsert(EmCharteredAccounts objChartedAccount)
+      {
+          Hashtable htParams = new Hashtable
+                                     {
+                                       {"@ChartedAccId",objChartedAccount.ChartedAccId},
+                                         {"@ChartedAccName",objChartedAccount.ChartedAccName},
+                                         {"@ChartedMasterAccName",objChartedAccount.ChartedMasterAccName},
+                                         {"@Type",objChartedAccount.Type}, 
+                                         {"@AccCode",objChartedAccount.AccCode},
+                                         {"@CompanyId",objChartedAccount.CompanyId},                                                                             
+                                         {"@BranchId",objChartedAccount.BranchId},  
+                                         {"@DepartmentId",objChartedAccount.DepartmentId},
+                                         {"@CreatedBy",objChartedAccount.CreatedBy},
+                                     {"@BaseCurrency",objChartedAccount.BaseCurrency},
+                                         {"@TranCurrency",objChartedAccount.TranCurrency},
+                                         {"@CategoryId",objChartedAccount.CategoryId},
+                                          {"@IsClient",objChartedAccount.Isclient}
+                                     };
+          return ExecuteNonQuery("CharteredAccounts_Insert", htParams);
+      }
 
-            return ExecuteDataSet("CharteredAccounts_Get");
-        }
+      public DataSet BindCharAccList()
+      {
+
+          return ExecuteDataSet("CharteredAccounts_ChartedAccList");
+      }
     }
 }

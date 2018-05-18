@@ -1,29 +1,31 @@
-﻿using DataManager;
-using EntityManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Text;
+using EntityManager;
+using DataManager;
 
 namespace BusinessManager
 {
-    public class BACashBook
+   public class BACashBook
     {
-        DACashBook objDACash = new DACashBook();
-        public int InsUpdCashBook(EMCashBook objEMCash)
-        {
-            return objDACash.InsUpdCashBook(objEMCash);
-        }
+       DACashBook objDACash = new DACashBook();
+       public int InsUpdCashBook(EMCashBook objEMCash)
+       {
+           return objDACash.InsUpdCashBook(objEMCash);
+       }
 
-        public DataSet GetCashBook(int CashBookId)
-        {
-            return objDACash.GetCashBook(CashBookId);
-        }
+       public DataSet GetCashBook(int CashBookId)
+       {
+           return objDACash.GetCashBook(CashBookId);
+       }
 
-        public int DeleteCashBook(int CashBookId)
-        {
-            return objDACash.DeleteCashBook(CashBookId);
-        }
+       public int DeleteCashBook(int CashBookId)
+       {
+           return objDACash.DeleteCashBook(CashBookId);
+       }
     }
 }

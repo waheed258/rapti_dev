@@ -2,33 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EntityManager
 {
-   public class EMBranch
+    public class EMBranch
     {
-       public int BranchId { get; set; }
-       public string BranchName { get; set; }
-       public string BranchLogo { get; set; }
-       public string BranchLogoPath { get; set; }
-       public string BranchPhoneNo { get; set; }
-       public string BranchAlternativeNo { get; set; }
-       public string BranchEmail { get; set; }
-       public string BranchPhysicalAddress { get; set; }
-       public string BranchPostalAddress { get; set; }
-       public int BranchCountry { get; set; }
-       public int BranchState { get; set; }
-       public int BranchCity { get; set; }
-       public int AddressFlag { get; set; }
-       public string BranchCoRegNo { get; set; }
-       public string BranchIATARegNo { get; set; }
-       public string BranchVatRegNo { get; set; }
-       public string BranchDoCex { get; set; }
-       public int BranchMemberOfAsata { get; set; }
-       public int CompanyId { get; set; }
-       public int BranchCurrency { get; set; }
-       public int BranchIsActive { get; set; }
-       public string BranchCode { get; set; }
+        public int BranchId { get; set; }
+        public string BranchName { get; set; }
+        public string BranchLogo { get; set; }
+        public string BranchLogoPath { get; set; }
+        public string BranchPhoneNo { get; set; }
+        public string BranchAlternativeNo { get; set; }
+        public string BranchEmail { get; set; }
+        public string BranchPhysicalAddress { get; set; }
+        public string BranchPostalAddress { get; set; }
+        public int BranchCountry { get; set; }
+        public int BranchState { get; set; }
+        public int BranchCity { get; set; }
+        public int AddressFlag { get; set; }
+        public string BranchCoRegNo { get; set; }
+        public string BranchIATARegNo { get; set; }
+        public string BranchVatRegNo { get; set; }
+        public string BranchDoCex { get; set; }
+        public int BranchMemberOfAsata { get; set; }
+        public int CompanyId { get; set; }
+        public int BranchCurrency { get; set; }
+        public int BranchIsActive { get; set; }
+        public string BranchCode { get; set; }
         public int CreatedBy { get; set; }
 
         ///    Configuration Table
@@ -50,17 +51,17 @@ namespace EntityManager
         public string SupplMainAccountName { get; set; }
         public string ClientMainAccountName { get; set; }
         public string ClientMainAcNo { get; set; }
-         public int ClientAcountType { get; set; }
+        public int ClientAcountType { get; set; }
         public int SupplAcountType { get; set; }
     }
 
-   public class EMClientTypeMaster
-   {
-       public int ClientTypeId { get; set; }
-       public string Code { get; set; }
-       public string Name { get; set; }
-       public int CompanyId { get; set; }
-       public int BranchId { get; set; }
-       public int CreatedBy { get; set; }
-   }
+    public class EMClientTypeMaster
+    {
+        public int ClientTypeId { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public int CompanyId { get; set; }
+        public int BranchId { get; set; }
+        public int CreatedBy { get; set; }
+    }
 }

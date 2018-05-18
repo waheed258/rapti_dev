@@ -1,14 +1,95 @@
-D:\FullRapti\Rapti_Solution\DataManager\bin\Debug\DataManager.dll
-D:\FullRapti\Rapti_Solution\DataManager\bin\Debug\DataManager.pdb
-D:\FullRapti\Rapti_Solution\DataManager\bin\Debug\EntityManager.dll
-D:\FullRapti\Rapti_Solution\DataManager\bin\Debug\EntityManager.pdb
-D:\FullRapti\Rapti_Solution\DataManager\obj\Debug\DataManager.csprojResolveAssemblyReference.cache
-D:\FullRapti\Rapti_Solution\DataManager\obj\Debug\DataManager.dll
-D:\FullRapti\Rapti_Solution\DataManager\obj\Debug\DataManager.pdb
-E:\Rapti_Dev\Rapti_Solution\DataManager\obj\Debug\DataManager.csprojResolveAssemblyReference.cache
-E:\Rapti_Dev\Rapti_Solution\DataManager\bin\Debug\DataManager.dll
-E:\Rapti_Dev\Rapti_Solution\DataManager\bin\Debug\DataManager.pdb
-E:\Rapti_Dev\Rapti_Solution\DataManager\bin\Debug\EntityManager.dll
-E:\Rapti_Dev\Rapti_Solution\DataManager\bin\Debug\EntityManager.pdb
-E:\Rapti_Dev\Rapti_Solution\DataManager\obj\Debug\DataManager.dll
-E:\Rapti_Dev\Rapti_Solution\DataManager\obj\Debug\DataManager.pdb
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\DataManager.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\DataManager.pdb
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\EntityManager.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\EntityManager.pdb
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\obj\Debug\DataManager.csprojResolveAssemblyReference.cache
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\obj\Debug\DataManager.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\obj\Debug\DataManager.pdb
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\HttpContextShim.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\Newtonsoft.Json.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.Formatting.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.WebRequest.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Web.Http.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\HttpContextShim.pdb
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\Newtonsoft.Json.xml
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.xml
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.Formatting.xml
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.WebRequest.xml
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\DataManager\bin\Debug\System.Web.Http.xml
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\DataManager.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\DataManager.pdb
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\EntityManager.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\HttpContextShim.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\Newtonsoft.Json.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.Formatting.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.WebRequest.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Web.Http.dll
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\EntityManager.pdb
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\HttpContextShim.pdb
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\Newtonsoft.Json.xml
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.xml
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.Formatting.xml
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.WebRequest.xml
+E:\light version\example2\FL_SOLUTION\DataManager\bin\Debug\System.Web.Http.xml
+E:\light version\example2\FL_SOLUTION\DataManager\obj\Debug\DataManager.csprojResolveAssemblyReference.cache
+E:\light version\example2\FL_SOLUTION\DataManager\obj\Debug\DataManager.dll
+E:\light version\example2\FL_SOLUTION\DataManager\obj\Debug\DataManager.pdb
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\DataManager.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\DataManager.pdb
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\EntityManager.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\HttpContextShim.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\Newtonsoft.Json.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.Formatting.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.WebRequest.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Web.Http.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\EntityManager.pdb
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\HttpContextShim.pdb
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\Newtonsoft.Json.xml
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.xml
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.Formatting.xml
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Net.Http.WebRequest.xml
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\bin\Debug\System.Web.Http.xml
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\obj\Debug\DataManager.csprojResolveAssemblyReference.cache
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\obj\Debug\DataManager.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\DataManager\obj\Debug\DataManager.pdb
+E:\light version\Rapti_Solution\DataManager\bin\Debug\DataManager.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\DataManager.pdb
+E:\light version\Rapti_Solution\DataManager\bin\Debug\EntityManager.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\HttpContextShim.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\Newtonsoft.Json.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.Formatting.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.WebRequest.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Web.Http.dll
+E:\light version\Rapti_Solution\DataManager\bin\Debug\EntityManager.pdb
+E:\light version\Rapti_Solution\DataManager\bin\Debug\HttpContextShim.pdb
+E:\light version\Rapti_Solution\DataManager\bin\Debug\Newtonsoft.Json.xml
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.xml
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.Formatting.xml
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.WebRequest.xml
+E:\light version\Rapti_Solution\DataManager\bin\Debug\System.Web.Http.xml
+E:\light version\Rapti_Solution\DataManager\obj\Debug\DataManager.csprojResolveAssemblyReference.cache
+E:\light version\Rapti_Solution\DataManager\obj\Debug\DataManager.dll
+E:\light version\Rapti_Solution\DataManager\obj\Debug\DataManager.pdb
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\DataManager.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\DataManager.pdb
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\EntityManager.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\HttpContextShim.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\Newtonsoft.Json.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.Formatting.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.WebRequest.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Web.Http.dll
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\EntityManager.pdb
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\HttpContextShim.pdb
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\Newtonsoft.Json.xml
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.xml
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.Formatting.xml
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Net.Http.WebRequest.xml
+E:\RaptiFull\Rapti_Solution\DataManager\bin\Debug\System.Web.Http.xml
+E:\RaptiFull\Rapti_Solution\DataManager\obj\Debug\DataManager.csprojResolveAssemblyReference.cache
+E:\RaptiFull\Rapti_Solution\DataManager\obj\Debug\DataManager.dll
+E:\RaptiFull\Rapti_Solution\DataManager\obj\Debug\DataManager.pdb

@@ -1,9 +1,20 @@
-D:\FullRapti\Rapti_Solution\EntityManager\bin\Debug\EntityManager.dll
-D:\FullRapti\Rapti_Solution\EntityManager\bin\Debug\EntityManager.pdb
-D:\FullRapti\Rapti_Solution\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
-D:\FullRapti\Rapti_Solution\EntityManager\obj\Debug\EntityManager.dll
-D:\FullRapti\Rapti_Solution\EntityManager\obj\Debug\EntityManager.pdb
-E:\Rapti_Dev\Rapti_Solution\EntityManager\bin\Debug\EntityManager.dll
-E:\Rapti_Dev\Rapti_Solution\EntityManager\bin\Debug\EntityManager.pdb
-E:\Rapti_Dev\Rapti_Solution\EntityManager\obj\Debug\EntityManager.dll
-E:\Rapti_Dev\Rapti_Solution\EntityManager\obj\Debug\EntityManager.pdb
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\EntityManager\bin\Debug\EntityManager.pdb
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.dll
+E:\TFSWorkSpace\FinanceListVersion\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.pdb
+E:\light version\example2\FL_SOLUTION\EntityManager\bin\Debug\EntityManager.pdb
+E:\light version\example2\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
+E:\light version\example2\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.dll
+E:\light version\example2\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.pdb
+D:\liteVersion\LT_Latest1\FL_SOLUTION\EntityManager\bin\Debug\EntityManager.pdb
+D:\liteVersion\LT_Latest1\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
+D:\liteVersion\LT_Latest1\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.dll
+D:\liteVersion\LT_Latest1\FL_SOLUTION\EntityManager\obj\Debug\EntityManager.pdb
+E:\light version\Rapti_Solution\EntityManager\bin\Debug\EntityManager.pdb
+E:\light version\Rapti_Solution\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
+E:\light version\Rapti_Solution\EntityManager\obj\Debug\EntityManager.dll
+E:\light version\Rapti_Solution\EntityManager\obj\Debug\EntityManager.pdb
+E:\RaptiFull\Rapti_Solution\EntityManager\bin\Debug\EntityManager.pdb
+E:\RaptiFull\Rapti_Solution\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
+E:\RaptiFull\Rapti_Solution\EntityManager\obj\Debug\EntityManager.dll
+E:\RaptiFull\Rapti_Solution\EntityManager\obj\Debug\EntityManager.pdb

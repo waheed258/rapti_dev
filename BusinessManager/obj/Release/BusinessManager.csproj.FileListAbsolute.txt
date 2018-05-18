@@ -1,0 +1,9 @@
+E:\light version\example2\FL_SOLUTION\BusinessManager\bin\Release\BusinessManager.dll
+E:\light version\example2\FL_SOLUTION\BusinessManager\bin\Release\BusinessManager.pdb
+E:\light version\example2\FL_SOLUTION\BusinessManager\bin\Release\DataManager.dll
+E:\light version\example2\FL_SOLUTION\BusinessManager\bin\Release\EntityManager.dll
+E:\light version\example2\FL_SOLUTION\BusinessManager\bin\Release\DataManager.pdb
+E:\light version\example2\FL_SOLUTION\BusinessManager\bin\Release\EntityManager.pdb
+E:\light version\example2\FL_SOLUTION\BusinessManager\obj\Release\BusinessManager.csprojResolveAssemblyReference.cache
+E:\light version\example2\FL_SOLUTION\BusinessManager\obj\Release\BusinessManager.dll
+E:\light version\example2\FL_SOLUTION\BusinessManager\obj\Release\BusinessManager.pdb

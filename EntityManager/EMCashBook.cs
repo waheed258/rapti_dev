@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EntityManager
 {
@@ -16,7 +17,5 @@ namespace EntityManager
         public string ReferenceFormat { get; set; }
         public string VatCodes { get; set; }
         public int CreatedBy { get; set; }
-        public int CompanyId { get; set; }
-        public int BranchId { get; set; }
     }
 }

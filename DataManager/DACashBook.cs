@@ -1,14 +1,17 @@
-﻿using EntityManager;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Collections;
+using System.Text;
+using System.Data.SqlClient;
+using EntityManager;
 
 namespace DataManager
 {
-    public class DACashBook : DataUtility
+    public class DACashBook:DataUtilities
     {
         public int InsUpdCashBook(EMCashBook objEMCash)
         {
@@ -22,8 +25,6 @@ namespace DataManager
                                             {"@ReferenceFormat",objEMCash.ReferenceFormat},
                                             {"@VatCodes",objEMCash.VatCodes},
                                             {"@CreatedBy",objEMCash.CreatedBy},
-                                             {"@CompanyId",objEMCash.CompanyId},
-                                            {"@BranchId",objEMCash.BranchId},
             };
             return ExecuteNonQuery("CashBookTypes_InsertUpdate", htparams);
         }

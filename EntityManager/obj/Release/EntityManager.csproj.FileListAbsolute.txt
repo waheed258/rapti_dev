@@ -1,0 +1,5 @@
+E:\light version\example2\FL_SOLUTION\EntityManager\bin\Release\EntityManager.dll
+E:\light version\example2\FL_SOLUTION\EntityManager\bin\Release\EntityManager.pdb
+E:\light version\example2\FL_SOLUTION\EntityManager\obj\Release\EntityManager.csprojResolveAssemblyReference.cache
+E:\light version\example2\FL_SOLUTION\EntityManager\obj\Release\EntityManager.dll
+E:\light version\example2\FL_SOLUTION\EntityManager\obj\Release\EntityManager.pdb
