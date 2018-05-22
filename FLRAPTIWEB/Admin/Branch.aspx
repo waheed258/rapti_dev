@@ -21,6 +21,7 @@
         <asp:HiddenField ID="hf_BranchId" runat="server" Value="0" />
         <asp:HiddenField ID="hf_ConfigurationId" runat="server" Value="0" />
         <asp:HiddenField ID="hf_MainAccId" runat="server" Value="0" />
+          <asp:HiddenField ID="hf_ClientTypeId" runat="server" Value="0" />
         <asp:HiddenField ID="hfImageLogo" runat="server" />
 
         <div class="panel-body">
@@ -436,7 +437,7 @@
                                 <asp:ListItem Value="2" Text="Item 4"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ControlToValidate="DDLClientaccType" runat="server" ID="rfvDDLClientaccType" ValidationGroup="branch"
-                                ErrorMessage="Select Client MainAccount Type" Text="Select Client MainAccount Type" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0" />
+                                ErrorMessage="Select Client MainAccount Type" Text="Select Client MainAccount Type" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="-1" />
 
                         </div>
                     </div>

@@ -28,7 +28,7 @@ namespace BusinessManager
 
         int datatable = 0;
 
-        string connstr = "server=PC\\SQLEXPRESS;user id=sa;password=Dino@123;database=erp_Flv_Dino; Max Pool Size=2000000;";
+        string connstr = "server=67.225.171.204;user id=Rapti_full_admin;password=Dino@123;database=Rapti_Full_Dev; Max Pool Size=2000000;";
 
         //testing server details
         //string connstr = "server=finlite.dinoosys.in;user id=finlite2_user;password=Dino@123;database=finlite2; Connection Timeout=120000;";

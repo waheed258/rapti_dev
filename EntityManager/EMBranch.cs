@@ -53,6 +53,12 @@ namespace EntityManager
         public string ClientMainAcNo { get; set; }
         public int ClientAcountType { get; set; }
         public int SupplAcountType { get; set; }
+
+        //ClientType Master
+
+        public int ClientTypeId { get; set; }
+        public string Name { get; set; }
+        public string Code { get; set; }
     }
 
     public class EMClientTypeMaster

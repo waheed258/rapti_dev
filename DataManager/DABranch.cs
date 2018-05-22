@@ -69,8 +69,7 @@ namespace DataManager
                                                 {"@PreFixCorporates",objBranch.PreFixCorporates},
                                                 {"@PreFixLiesures",objBranch.PreFixLiesures},
                                                 {"@RoundingDecimal",objBranch.RoundingDecimal},
-                                                {"@SupplierMainAcNo",objBranch.SupplierMainAcNo},
-                                                {"@ClientMainAcNo",objBranch.ClientMainAcNo},
+                                            
                                                 {"@BranchId",objBranch.BranchId},
                                             
                                                 {"@CreatedBy",objBranch.CreatedBy},
@@ -83,6 +82,19 @@ namespace DataManager
             return IsSuccess;
         }
 
+        public int InsUpdClientTypeMaster(EMBranch objBranch)
+        {
+            Hashtable htparams = new Hashtable
+                                            {
+                                                {"@ClientTypeId",objBranch.ClientTypeId},
+                                                {"@Name",objBranch.Name},
+                                                {"@Code",objBranch.Code},
+                                                {"@BranchId",objBranch.BranchId},
+                                                  {"@CompanyId",objBranch.CompanyId},
+                                                {"@CreatedBy",objBranch.CreatedBy},
+                                            };
+            return ExecuteNonQuery("ClienttypeMaster_InsertUpdate", htparams);
+        }
         public DataSet Get_BranchData(int BranchId)
         {
             Hashtable htparams = new Hashtable

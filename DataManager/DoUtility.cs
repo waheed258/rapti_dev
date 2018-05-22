@@ -517,7 +517,7 @@ namespace DataManager
         {
             Hashtable htparams = new Hashtable
            {
-             {"@AccountCode",AccountCode},
+             {"@Accountno",AccountCode},
               {"@Type",type}
            };
 

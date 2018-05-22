@@ -205,7 +205,7 @@ public partial class Admin_Branch : System.Web.UI.Page
                 lblLogo.Text = ds.Tables[0].Rows[0]["BranchLogo"].ToString();
                 hfImageLogo.Value = ds.Tables[0].Rows[0]["BranchlogoPath"].ToString();
                 FileLogo = ds.Tables[0].Rows[0]["BranchlogoPath"].ToString();
-                logoview.Attributes["href"] = "../Admin/CompanyLogos/" + FileLogo;
+                logoview.Attributes["href"] = "../Admin/ClientsLogo/" + FileLogo;
 
 
                 hf_ConfigurationId.Value = ds.Tables[0].Rows[0]["ConfigurationId"].ToString();
@@ -222,7 +222,25 @@ public partial class Admin_Branch : System.Web.UI.Page
                 txtPreFixCorporates.Text = ds.Tables[0].Rows[0]["PreFixCorporates"].ToString();
                 txtPreFixLiesures.Text = ds.Tables[0].Rows[0]["PreFixLiesures"].ToString();
                 txtRoundingDecimal.Text = ds.Tables[0].Rows[0]["RoundingDecimal"].ToString();
+
+                txtPreFixDebtors.Enabled = false;
+                txtPreFixCorporates.Enabled = false;
+                txtPreFixLiesures.Enabled = false;
+
+                txtSupplierMainAcNo.Enabled = false;
+                txtSupplierMainAccName.Enabled = false;
+                DDLSupplierMainAccType.Enabled = false;
+
+                txtClientmainAccName.Enabled = false;
+                DDLClientaccType.Enabled = false;
+                txtClientMainAcNo.Enabled = false;
+
                 txtSupplierMainAcNo.Text = ds.Tables[0].Rows[0]["SupplierMainAcNo"].ToString();
+                txtSupplierMainAccName.Text = ds.Tables[0].Rows[0]["SupplMainAccountName"].ToString();
+                DDLSupplierMainAccType.SelectedIndex = DDLSupplierMainAccType.Items.IndexOf(DDLSupplierMainAccType.Items.FindByValue(ds.Tables[0].Rows[0]["SupplAcountType"].ToString()));
+
+                txtClientmainAccName.Text = ds.Tables[0].Rows[0]["ClientMainAccountName"].ToString();
+                DDLClientaccType.SelectedIndex = DDLClientaccType.Items.IndexOf(DDLClientaccType.Items.FindByValue(ds.Tables[0].Rows[0]["ClientAcountType"].ToString()));
                 txtClientMainAcNo.Text = ds.Tables[0].Rows[0]["ClientMainAcNo"].ToString();
             }
         }
@@ -258,6 +276,16 @@ public partial class Admin_Branch : System.Web.UI.Page
             _objEMBranch.CompanyId = 1;
             _objEMBranch.BranchCurrency = Convert.ToInt32(DDLCurrency.SelectedValue);
             _objEMBranch.BranchIsActive = Convert.ToInt32(chkIsactive.Checked);
+
+            _objEMBranch.SupplAcountType = Convert.ToInt32(DDLSupplierMainAccType.SelectedItem.Value);
+            _objEMBranch.SupplierMainAcNo = txtSupplierMainAcNo.Text;
+            _objEMBranch.SupplMainAccountName = txtSupplierMainAccName.Text;
+
+            _objEMBranch.ClientAcountType = Convert.ToInt32(DDLClientaccType.SelectedItem.Value);
+            _objEMBranch.ClientMainAcNo = txtClientMainAcNo.Text;
+            _objEMBranch.ClientMainAccountName = txtClientmainAccName.Text;
+
+
             _objEMBranch.CreatedBy = 1;
             _objEMBranch.BranchCode = txtBranchCode.Text;
 
@@ -296,15 +324,35 @@ public partial class Admin_Branch : System.Web.UI.Page
                 _objEMBranch.PreFixCorporates = txtPreFixCorporates.Text;
                 _objEMBranch.PreFixLiesures = txtPreFixLiesures.Text;
                 _objEMBranch.RoundingDecimal = txtRoundingDecimal.Text;
-
-                _objEMBranch.SupplierMainAcNo = txtSupplierMainAcNo.Text;
-                _objEMBranch.ClientMainAcNo = txtClientMainAcNo.Text;
                 _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
                 _objEMBranch.CreatedBy = 1;
                 int configResult = _objBALBranch.InsUpdConfiguration(_objEMBranch);
 
                 if (configResult > 0)
                 {
+                    _objEMBranch.ClientTypeId = Convert.ToInt32(hf_ClientTypeId.Value);
+                    _objEMBranch.Name = "Corporate";
+                    _objEMBranch.Code = txtPreFixCorporates.Text;
+                    _objEMBranch.CompanyId = 1;
+                    _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
+                    _objEMBranch.CreatedBy = 1;
+                 _objBALBranch.InsUpdClientTypeMaster(_objEMBranch);
+
+                    _objEMBranch.ClientTypeId = Convert.ToInt32(hf_ClientTypeId.Value);
+                    _objEMBranch.Name = "Debtor";
+                    _objEMBranch.Code = txtPreFixDebtors.Text;
+                    _objEMBranch.CompanyId = 1;
+                    _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
+                    _objEMBranch.CreatedBy = 1;
+                    _objBALBranch.InsUpdClientTypeMaster(_objEMBranch);
+
+                    _objEMBranch.ClientTypeId = Convert.ToInt32(hf_ClientTypeId.Value);
+                    _objEMBranch.Name = "Leisure";
+                    _objEMBranch.Code = txtPreFixLiesures.Text;
+                    _objEMBranch.CompanyId = 1;
+                    _objEMBranch.BranchId = Convert.ToInt32(Result.ToString());
+                    _objEMBranch.CreatedBy = 1;
+                    int clienttype = _objBALBranch.InsUpdClientTypeMaster(_objEMBranch);
 
                     objEMMainAccount.MainAccId = Convert.ToInt32(hf_MainAccId.Value);
                     objEMMainAccount.MainAcName = txtSupplierMainAccName.Text;
@@ -313,6 +361,7 @@ public partial class Admin_Branch : System.Web.UI.Page
                     objEMMainAccount.BranchId = Result;
                     objEMMainAccount.CompanyId = 1;
                    DataSet ds= _objBoutility.CheckAccCode_ExistorNot(txtSupplierMainAcNo.Text, "MainAcc");
+
                    if (ds.Tables[0].Rows.Count > 0)
                    { }
                    else
@@ -328,7 +377,7 @@ public partial class Admin_Branch : System.Web.UI.Page
                         objEMMainAccount.AcType = Convert.ToInt32(DDLClientaccType.SelectedItem.Value);
                         objEMMainAccount.BranchId = Result;
                         objEMMainAccount.CompanyId = 1;
-                        DataSet dsclient = _objBoutility.CheckAccCode_ExistorNot(txtClientMainAcNo.Text, "MainAcc");
+                        DataSet dsclient = _objBoutility.CheckAccCodeExitorNot(txtClientMainAcNo.Text, "MainAcc");
                         if (dsclient.Tables[0].Rows.Count > 0)
                         {
 
@@ -531,7 +580,7 @@ public partial class Admin_Branch : System.Web.UI.Page
                 string strPath = System.IO.Path.GetExtension(FUName.PostedFile.FileName);
                 string date = DateTime.Now.ToString("yyyyMMddhhmmssfff");
                 fileName = date + strPath;
-                FUName.SaveAs(Server.MapPath("~/Admin/CompanyLogos/" + fileName));
+                FUName.SaveAs(Server.MapPath("~/Admin/ClientsLogo/" + fileName));
                 lblLogo.Text = BranchLogoUpload.FileName;
             }
 

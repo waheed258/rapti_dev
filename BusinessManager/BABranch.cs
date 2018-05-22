@@ -22,6 +22,10 @@ namespace BusinessManager
             return objDABranch.InsUpdConfiguration(objBranch);
         }
 
+        public int InsUpdClientTypeMaster(EMBranch objBranch)
+        {
+            return objDABranch.InsUpdClientTypeMaster(objBranch);
+        }
         public DataSet Branch_GetData(int BranchId)
         {
             return objDABranch.Get_BranchData(BranchId);
