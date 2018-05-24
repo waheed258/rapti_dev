@@ -75,13 +75,17 @@
                         </div>
 
                         &nbsp;
-     <asp:GridView ID="gvImportTickets" runat="server" AllowPaging="true" Width="100%" PageSize="10"
+     <asp:GridView ID="gvImportTickets" runat="server" AllowPaging="true" Width="100%" PageSize="30"
          AutoGenerateColumns="False" DataKeyNames="ID" CssClass="table table-striped table-bordered"
          OnSorting="gvImportTickets_Sorting" OnPageIndexChanging="gvImportTickets_PageIndexChanging"
          ShowHeaderWhenEmpty="true">
          <PagerStyle BackColor="#efefef" ForeColor="black" HorizontalAlign="Left" CssClass="pagination1" />
          <Columns>
-
+             <asp:TemplateField HeaderText="S.No" HeaderStyle-CssClass="panel-heading" ItemStyle-CssClass="gradeC">
+                 <ItemTemplate>
+                     <%# Container.DataItemIndex+1 %>
+                 </ItemTemplate>
+             </asp:TemplateField>
              <asp:TemplateField HeaderText="No" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
                  <ItemTemplate>
                      <%#Eval("ID")%>
