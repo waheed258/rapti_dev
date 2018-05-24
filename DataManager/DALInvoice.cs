@@ -229,14 +229,14 @@ namespace DataManager
         }
 
         //Edit for Invoice
-        public DataSet GetInvoice(int InvId)
+        public DataSet GetInvoice(int InvId,int companyId,int BranchId)
         {
             Hashtable htparams = new Hashtable
            {
-             {"@InvId",InvId}
-           
-
-             
+             {"@InvId",InvId},
+             {"@CompanyId",companyId},
+             {"@BranchId",BranchId}
+   
            };
 
             return ExecuteDataSet("Invoice_Get", htparams);

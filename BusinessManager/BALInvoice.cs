@@ -75,9 +75,9 @@ namespace BusinessManager
             return _objDALInvoice.GetInvoiceDetailsByClientAndStatus(ClientType, ClientId, Status);
         }
         //Edit for Invoice
-        public DataSet GetInvoice(int InvId)
+        public DataSet GetInvoice(int InvId, int companyId, int BranchId)
         {
-            return _objDALInvoice.GetInvoice(InvId);
+            return _objDALInvoice.GetInvoice(InvId,companyId,BranchId);
         }
         //Invoice Editer Grid
         public DataSet GetInvoiceLinesEdit(int InvId)

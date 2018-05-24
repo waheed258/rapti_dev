@@ -1009,7 +1009,7 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <asp:DropDownList ID="ddlAirPayment" runat="server" CssClass="form-control decimalRight">
-                                                    <asp:ListItem Text="--Select Payment--" Value="-1" Selected="True"></asp:ListItem>
+                                                    <%--<asp:ListItem Text="--Select Payment--" Value="-1" Selected="True"></asp:ListItem>--%>
                                                 </asp:DropDownList>
                                             </div>
 

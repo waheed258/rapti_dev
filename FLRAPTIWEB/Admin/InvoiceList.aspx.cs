@@ -980,7 +980,8 @@ public partial class Admin_InvoiceList : System.Web.UI.Page
                 ImageButton ImgeReceiptBtn = (ImageButton)e.Row.FindControl("imgInvReceipt");
                 lblID.Text = gvInvoiceList.DataKeys[e.Row.RowIndex].Value.ToString();
                 int Invid = Convert.ToInt32(lblID.Text);
-                DataSet invoiceData = objBALInvoice.GetInvoice(Invid);
+                DataSet invoiceData = objBALInvoice.GetInvoice(Invid, Convert.ToInt32(Session["UserCompanyId"].ToString()), Convert.ToInt32(Session["UserLoginId"].ToString()));
+
                 if (invoiceData.Tables[0].Rows.Count >= 1)
                 {
                     if (invoiceData.Tables[0].Rows[0]["PaymentStatus"].ToString() == "1")
@@ -1000,7 +1001,8 @@ public partial class Admin_InvoiceList : System.Web.UI.Page
                 ImageButton ImgeReceiptpdfBtn = (ImageButton)e.Row.FindControl("imgReceiptPdf");
                 lblID.Text = gvInvoiceList.DataKeys[e.Row.RowIndex].Value.ToString();
                 int invid = Convert.ToInt32(lblID.Text);
-                DataSet invData = objBALInvoice.GetInvoice(invid);
+                DataSet invData = objBALInvoice.GetInvoice(invid, Convert.ToInt32(Session["UserCompanyId"].ToString()), Convert.ToInt32(Session["UserLoginId"].ToString()));
+         
                 if (invData.Tables[0].Rows.Count >= 1)
                 {
                     if (invData.Tables[0].Rows[0]["PaymentStatus"].ToString() == "1")
@@ -1039,7 +1041,8 @@ public partial class Admin_InvoiceList : System.Web.UI.Page
             GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
             lblID.Text = gvInvoiceList.DataKeys[gvrow.RowIndex].Value.ToString();
             int Invid = Convert.ToInt32(lblID.Text);
-            DataSet invoiceData = objBALInvoice.GetInvoice(Invid);
+            DataSet invoiceData = objBALInvoice.GetInvoice(Invid, Convert.ToInt32(Session["UserCompanyId"].ToString()), Convert.ToInt32(Session["UserLoginId"].ToString()));
+
             if (invoiceData.Tables[0].Rows.Count >= 1)
             {
                 //ddlAccountNo.SelectedValue = invoiceData.Tables[0].Rows[0]["ClientNameId"].ToString();
@@ -1524,6 +1527,10 @@ public partial class Admin_InvoiceList : System.Web.UI.Page
 
 
 
- 
+
+    protected void imgPdf_Click1(object sender, ImageClickEventArgs e)
+    {
+
+    }
 }
 

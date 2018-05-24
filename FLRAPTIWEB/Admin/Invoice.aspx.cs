@@ -3308,7 +3308,10 @@ public partial class Admin_Invoice : System.Web.UI.Page
         {
             _objEmInvoice.InvId = InvId;
 
-            DataSet ds = _objBalInvoice.GetInvoice(InvId);
+            _objEmInvoice.CompanyId = Convert.ToInt32(Session["UserCompanyId"].ToString());
+            _objEmInvoice.CreatedBy = Convert.ToInt32(Session["UserLoginId"].ToString());
+
+            DataSet ds = _objBalInvoice.GetInvoice(InvId, Convert.ToInt32(Session["UserCompanyId"].ToString()), Convert.ToInt32(Session["UserLoginId"].ToString()));
 
 
             if (ds.Tables.Count > 0)

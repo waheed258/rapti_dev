@@ -242,13 +242,13 @@
                                 <asp:BoundField DataField="consultantName" HeaderText="Consultant Name" />
                                 <asp:BoundField DataField="InvOrder" HeaderText="Order No" />
                                 <asp:BoundField DataField="InvoiceTotal" HeaderText="Invoice Total" ItemStyle-HorizontalAlign="Right" />
-                                 <asp:BoundField DataField="receiptStatus" HeaderText="Receipt Status"  />
+                                 <%--<asp:BoundField DataField="receiptStatus" HeaderText="Receipt Status"  />--%>
                                
 
                                 <asp:TemplateField HeaderText="Sending Options">
                                     <ItemTemplate>
                                         <asp:ImageButton ID="imgSendMail" ImageUrl="~/images/icon-email.png" runat="server" Width="30" Height="20" OnClick="imgSendMail_Click" title="Mail" />
-                                        <asp:ImageButton ID="imgPdf" ImageUrl="~/images/PdfIcon.png" runat="server" Width="30" Height="20" OnClick="imgPdf_Click" title="Pdf" />
+                                        <asp:ImageButton ID="imgPdf" ImageUrl="~/images/PdfIcon.png" runat="server" CausesValidation="true" Width="30" Height="20" OnClick="imgPdf_Click1"  title="Pdf" />
                                         <asp:ImageButton ID="imgAccounting" ImageUrl="~/images/Money.png" runat="server" Width="30" Height="20" OnClick="imgAccounting_Click" title="Account Analysis" />
 
 
