@@ -43,23 +43,17 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
         {
             ddlInvMesg.Enabled = false;
             BindImportedTicketData();
-            //general Charge
-            DataSet objDs = null; // Single sp
-            BindGenServiceTypes();
-            //BindGenPassengerNames();
-            BindGenCreditCardType();
+         
+            BindPageLoadData();
+            ddlServiceType.Enabled = false;
+           
+
             txtRateNet.Enabled = false;
             txtVatAmount.Enabled = false;
             txtExcluAmount.Enabled = false;
             txtClientTotal.Enabled = false;
-            //service fee---
-
-
-
-            BindSerServiceTypes();
+ 
             ddlPassengerName.Enabled = false;
-
-            BindPaymentType();
 
             ddlCreditCardType.Enabled = false;
             ddlCollectVia.Enabled = false;
@@ -68,13 +62,6 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
             rfvtxtTASFMPD.Enabled = false;
             rfvddlCollectVia.Enabled = false;
             rfvddlCreditCardType.Enabled = false;
-
-
-            //land
-            BindLandSuppliers();
-            BindType();
-            BindLandPaymentType();
-            BindLandService();
             DDlandCreditCard.Enabled = false;
             txtLandVatPer.Enabled = false;
             txtLandExlVatPer.Enabled = false;
@@ -89,16 +76,171 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
             txtlandCmblIncl.Enabled = false;
             txtlandcmblExcl.Enabled = false;
             txtlandTotalcmblIncl.Enabled = false;
-            // Session["TempUniqCode"] = "";
 
-            // BindInvoiceLineItemsCount();
-            //invoice Loading
-            BindInvoiceDropDown();
 
         }
     }
     //importing tickets data form text files
+    private void BindAirServiceTypes()
+    {
+        try
+        {
+            string Type = "Air";
+            DataSet ds = new DataSet();
+            ds = _doUtilities.GetServiceTypeByType(Type);
 
+            ViewState["ddlAirService"] = ds.Tables[0];
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                txtAirService.Text = ds.Tables[0].Rows[0]["ComDesc"].ToString();
+                //ddlAirService.DataSource = ds.Tables[0];
+                //ddlAirService.DataTextField = "ComDesc";
+                //ddlAirService.DataValueField = "ComId";
+                //ddlAirService.DataBind();
+                //ddlAirService.Items.Insert(0, new ListItem("--Select Service--", "0"));
+
+            }
+            else
+            {
+                //ddlAirService.DataSource = null;
+                //ddlAirService.DataBind();
+            }
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
+            ExceptionLogging.SendExcepToDB(ex);
+        }
+    }
+
+    private void AirTicketType()
+    {
+        try
+        {
+            BATicketType objTicketType = new BATicketType();
+            int TId = 0;
+            DataSet dtTicketType = new DataSet();
+            dtTicketType = objTicketType.GetTicketType(TId);
+            if (dtTicketType.Tables[0].Rows.Count > 0)
+            {
+
+                txtTicketType.Text = dtTicketType.Tables[0].Rows[0]["TDesc"].ToString();
+       
+            }
+            else
+            {
+            
+            }
+        }
+        catch (Exception ex)
+        {
+
+            lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
+            ExceptionLogging.SendExcepToDB(ex);
+        }
+
+    }
+    private void BindPageLoadData()
+    {
+
+        txtAirCommInclu.Enabled = false;
+        txtVatPer.Enabled = false;
+        txtAirVatOnFare.Enabled = false;
+        txtAirClientTot.Enabled = false;
+        txtAirDueToBsp.Enabled = false;
+        txtAirCommVat.Enabled = false;
+        txtAirAgentVat.Enabled = false;
+        ddlInvMesg.Enabled = false;
+
+        //BindAirLine();
+        // BindTypes();
+        BindAirServiceTypes();
+        //general Charge
+        DataSet objDs = null; // Single sp
+        BindGenServiceTypes();
+
+        BindGenCreditCardType();
+        txtRateNet.Enabled = false;
+        txtVatAmount.Enabled = false;
+        txtExcluAmount.Enabled = false;
+        txtClientTotal.Enabled = false;
+        //service fee---
+        BindSerServiceTypes();
+        ddlPassengerName.Enabled = false;
+
+        BindPaymentType();
+
+        ddlCreditCardType.Enabled = false;
+        ddlCollectVia.Enabled = false;
+        txtTASFMPD.Enabled = false;
+        txtClientTotal.Enabled = false;
+        rfvtxtTASFMPD.Enabled = false;
+        rfvddlCollectVia.Enabled = false;
+        rfvddlCreditCardType.Enabled = false;
+        //land
+        BindLandSuppliers();
+        BindType();
+        BindLandPaymentType();
+        BindLandService();
+        DDlandCreditCard.Enabled = false;
+        txtLandVatPer.Enabled = false;
+        txtLandExlVatPer.Enabled = false;
+        txtlandExclVatAmount.Enabled = false;
+        txtlandDuefromclient.Enabled = false;
+        txtlandLessComm.Enabled = false;
+        txtlandDuetoSupplier.Enabled = false;
+        txtlandCommIncl.Enabled = false;
+        txtlandVatAmount.Enabled = false;
+        txtlandCommExcl.Enabled = false;
+
+        txtlandCmblIncl.Enabled = false;
+        txtlandcmblExcl.Enabled = false;
+        txtlandTotalcmblIncl.Enabled = false;
+       
+        //invoice Loading
+        AirTicketType();
+        BindInvoiceDropDown();
+
+        
+      
+        AllCommissionTypes_GetComPercentage();
+        BindPrintStyle();
+    }
+    private void AllCommissionTypes_GetComPercentage()
+    {
+        DataSet ds_AllCommissionTypes_GetComPercentage = _objBALAirTicket.AllCommissionTypes_GetComPercentage();
+        ViewState["AllCommissionTypes_GetComPercentage"] = ds_AllCommissionTypes_GetComPercentage.Tables[0];
+    }
+    private void BindPrintStyle()
+    {
+        try
+        {
+            DataSet ds = new DataSet();
+            ds = _objBalInvoice.Get_printstyle();
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+
+                ddlInvPdfPrintStyle.DataSource = ds.Tables[0];
+                ddlInvPdfPrintStyle.DataTextField = "Name";
+                ddlInvPdfPrintStyle.DataValueField = "PrintstyleId";
+                ddlInvPdfPrintStyle.DataBind();
+                ddlInvPdfPrintStyle.Items.Insert(0, new ListItem("--Select Print Style--", "0"));
+            }
+            else
+            {
+                ddlInvPdfPrintStyle.Items.Insert(0, new ListItem("--Select Print Style--", "0"));
+                ddlInvPdfPrintStyle.DataSource = null;
+                ddlInvPdfPrintStyle.DataBind();
+            }
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
+            ExceptionLogging.SendExcepToDB(ex);
+        }
+    }
     private void BindImportedTicketData()
     {
 
@@ -457,9 +599,14 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
             //_objAirTicket.AirCommInclu = string.IsNullOrEmpty(txtAirCommInclu.Text) ? (0.0M) : Convert.ToDecimal(txtAirCommInclu.Text);
             //_objAirTicket.AirDueToBsp = string.IsNullOrEmpty(txtAirDueToBsp.Text) ? 0 : Convert.ToDecimal(txtAirDueToBsp.Text);
             //_objAirTicket.TempUniqCode = uniqueIdSession();
-            _objEmInvoice.PrintStyleId = Convert.ToInt32(ddlInvPdfPrintStyle.SelectedValue.ToString());
-            _objEmInvoice.CreatedBy = 0;
+            _objEmInvoice.PrintStyleId = Convert.ToInt32(ddlInvPdfPrintStyle.SelectedValue.ToString());        
             _objEmInvoice.RefundAmount = 0;
+
+
+            _objEmInvoice.BranchId = Convert.ToInt32(Session["BranchId"].ToString());
+            _objEmInvoice.CompanyId = Convert.ToInt32(Session["UserCompanyId"].ToString());
+            _objEmInvoice.CreatedBy = Convert.ToInt32(Session["UserLoginId"].ToString());
+
             int Result = _objBalInvoice.InsertInvoice(_objEmInvoice);
 
             if (Result > 0)
@@ -1894,11 +2041,11 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
                 ddlInvCosultant.DataBind();
                 ddlInvCosultant.Items.Insert(0, new ListItem("--Select Consultant--", "0"));
 
-                ddlInvMesg.DataSource = ds.Tables[1];
-                ddlInvMesg.DataTextField = "NpName";
-                ddlInvMesg.DataValueField = "NotePadId";
-                ddlInvMesg.DataBind();
-                ddlInvMesg.Items.Insert(0, new ListItem("--Select Consultant--", "0"));
+                //ddlInvMesg.DataSource = ds.Tables[1];
+                //ddlInvMesg.DataTextField = "NpName";
+                //ddlInvMesg.DataValueField = "NotePadId";
+                //ddlInvMesg.DataBind();
+                //ddlInvMesg.Items.Insert(0, new ListItem("--Select Messages--", "0"));
 
                 drpInvClientType.DataSource = ds.Tables[2];
                 drpInvClientType.DataTextField = "Name";
@@ -1919,29 +2066,24 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
                 drpInvBookDest.DataBind();
                 drpInvBookDest.Items.Insert(0, new ListItem("--Select Booking Destination--", "0"));
 
+                ViewState["drpInvClientName"] = ds.Tables[5];
+                ViewState["CommissionType"] = ds.Tables[6];
             }
             else
             {
 
                 ddlInvCosultant.DataSource = null;
                 ddlInvCosultant.DataBind();
-                ddlInvCosultant.Items.Insert(0, new ListItem("--Select Consultant--", "0"));
-
-                ddlInvMesg.DataSource = null;
-                ddlInvMesg.DataBind();
 
 
                 drpInvClientType.DataSource = null;
                 drpInvClientType.DataBind();
-                drpInvClientType.Items.Insert(0, new ListItem("--Select Client Type--", "0"));
 
                 drpInvBookingSrc.DataSource = null;
                 drpInvBookingSrc.DataBind();
-                drpInvBookingSrc.Items.Insert(0, new ListItem("--Select Booking Source--", "0"));
 
                 drpInvBookDest.DataSource = null;
                 drpInvBookDest.DataBind();
-                drpInvBookDest.Items.Insert(0, new ListItem("--Select Booking Destination--", "0"));
             }
         }
         catch (Exception ex)
@@ -1951,33 +2093,65 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
         }
 
     }
-
-    protected void drpInvClientType_TextChanged(object sender, EventArgs e)
+    private void BindClientNames()
     {
         try
         {
             drpInvClientName.Items.Clear();
 
-            int cllienttypeId = Convert.ToInt32(drpInvClientType.SelectedValue.ToString());
+            int clientTypeId = Convert.ToInt32(drpInvClientType.SelectedItem.Value.ToString());
 
-            DataSet ds = new DataSet();
-            ds = _objBOUtiltiy.InvoiceDdlBinding(cllienttypeId);
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (clientTypeId > 0)
             {
+                //DataSet ds = new DataSet();
+                //ds = _objBOUtiltiy.InvoiceDdlBinding(clientTypeId);
 
-                drpInvClientName.DataSource = ds.Tables[0];
-                drpInvClientName.DataTextField = "ClientName";
-                drpInvClientName.DataValueField = "ClientId";
-                drpInvClientName.DataBind();
-                drpInvClientName.Items.Insert(0, new ListItem("--Select Client Name--", "0"));
+                DataTable dt = (DataTable)ViewState["drpInvClientName"];
+
+                var clientNameList = from list in dt.AsEnumerable()
+                                     where Convert.ToInt32(list["ClientType"]) == clientTypeId
+                                     select new
+                                     {
+                                         ClientName = list["ClientNameAccount"].ToString(),
+                                         ClientId = list["ClientId"].ToString()
+                                     };
+
+                if (clientNameList.ToString() != null)
+                {
+
+                    drpInvClientName.DataSource = clientNameList;
+                    drpInvClientName.DataTextField = "ClientName";
+                    drpInvClientName.DataValueField = "ClientId";
+                    drpInvClientName.DataBind();
+                    drpInvClientName.Items.Insert(0, new ListItem("--Select Client--", "0"));
+                }
+                else
+                {
+                    drpInvClientName.Items.Insert(0, new ListItem("--Select Client--", "0"));
+                    drpInvClientName.DataSource = null;
+                    drpInvClientName.DataBind();
+                }
             }
             else
             {
                 drpInvClientName.Items.Insert(0, new ListItem("--Select Client--", "0"));
-                drpInvClientName.DataSource = null;
-                drpInvClientName.DataBind();
             }
+
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
+            ExceptionLogging.SendExcepToDB(ex);
+        }
+
+    }
+    protected void drpInvClientType_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            drpInvClientName.Focus();
+            BindClientNames();
         }
         catch (Exception ex)
         {
