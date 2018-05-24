@@ -22,7 +22,6 @@
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="col-sm-2">
@@ -155,21 +154,19 @@
                     </div>
 
 
-
+                    <div class="form-group">
+                        <br />
+                    </div>
 
                     <div class="form-group">
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                         </div>
                         <div class="col-sm-4">
-                            <asp:Button runat="server" ID="Company_Submit" class="btn btn-success" ValidationGroup="landsupplier"
+                            <asp:Button runat="server" ID="Company_Submit" class="btn btn-success btn-lg" ValidationGroup="landsupplier"
                                 Text="Submit"
                                 UseSubmitBehavior="false"
                                 OnClientClick="this.disabled='true';this.value='Please Wait...' "
                                 OnClick="Company_Submit_Click" />&nbsp;
-                    <asp:Button runat="server" ID="btnCancel"
-                        class="btn btn-danger" Text="Cancel" OnClick="btnCancel_Click" />&nbsp;
-                    <asp:Button ID="btnreset" runat="server" CssClass="btn btn-primary blue" Text="Reset" OnClick="btnreset_Click" />
-
                         </div>
                     </div>
 

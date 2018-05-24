@@ -218,7 +218,6 @@ public partial class Admin_Company : System.Web.UI.Page
             if (Result > 0)
             {
                 // lblMsg.Text = _BOUtility.ShowMessage("success", "Success", "Air Suppliers Created Successfully.");
-                ClearControl();
                 Response.Redirect("CompanyDetails.aspx", false);
             }
             else
@@ -292,26 +291,6 @@ public partial class Admin_Company : System.Web.UI.Page
             throw;
         }
     }
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
 
-    }
-    protected void btnreset_Click(object sender, EventArgs e)
-    {
-        ClearControl();
-    }
-    private void ClearControl()
-    {
 
-        hf_CompanyId.Value = "0";
-        txtCompanyName.Text = "";
-        txtEmailId.Text = "";
-        txtPhoneNo.Text = "";
-        txtWebSite.Text = "";
-        txtFaxNo.Text = "";
-        DDLCountry.SelectedValue = "-1";
-        DDLProvince.SelectedValue = "-1";
-        DDLCity.SelectedValue = "-1";
-        DDLCurrency.SelectedValue = "-1";
-    }
 }
