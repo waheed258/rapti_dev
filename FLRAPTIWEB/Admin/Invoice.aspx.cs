@@ -2418,8 +2418,14 @@ public partial class Admin_Invoice : System.Web.UI.Page
                 string vatRate = (dt.AsEnumerable()
                     .Where(p => p["TypeId"].ToString() == DDlandType.SelectedItem.Value.ToString())
                     .Select(p => p["VatRate"].ToString())).FirstOrDefault();
-                vatRate = _objBOUtiltiy.FormatTwoDecimal(vatRate.ToString());
-
+                if (vatRate != null)
+                {
+                    vatRate = _objBOUtiltiy.FormatTwoDecimal(vatRate.ToString());
+                }
+                else
+                {
+                    vatRate = _objBOUtiltiy.FormatTwoDecimal(string.IsNullOrEmpty(vatRate) ? "0" : vatRate.ToString());
+                }
                 txtLandExlVatPer.Text = vatRate;
                 txtLandVatPer.Text = vatRate;
             }
@@ -2440,6 +2446,7 @@ public partial class Admin_Invoice : System.Web.UI.Page
             }
             else
             {
+                txtlandTotalExcl.Text = "0.00";
                 txtlandTotalIncl.Text = txtlandTotalExcl.Text;
 
             }

@@ -45,7 +45,7 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
             BindImportedTicketData();
          
             BindPageLoadData();
-            ddlServiceType.Enabled = false;
+        //    ddlServiceType.Enabled = false;
            
 
             txtRateNet.Enabled = false;
@@ -141,6 +141,27 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
         }
 
     }
+    private void BindAirLine()
+    {
+        try
+        {
+
+            DataSet dsvat = _doUtilities.getVatByType();
+
+            if (dsvat.Tables[0].Rows.Count > 0)
+            {
+                ViewState["get_VatRateByType"] = dsvat.Tables[0];
+            }
+
+
+
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "Danger", ex.Message);
+            ExceptionLogging.SendExcepToDB(ex);
+        }
+    }
     private void BindPageLoadData()
     {
 
@@ -153,7 +174,7 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
         txtAirAgentVat.Enabled = false;
         ddlInvMesg.Enabled = false;
 
-        //BindAirLine();
+        BindAirLine();
         // BindTypes();
         BindAirServiceTypes();
         //general Charge
@@ -1120,13 +1141,13 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
                 ddlServiceType.DataTextField = "ComDesc";
                 ddlServiceType.DataValueField = "ComId";
                 ddlServiceType.DataBind();
-                ddlServiceType.Items.Insert(0, new ListItem("--Select Payment--", "0"));
+                ddlServiceType.Items.Insert(0, new ListItem("--Select Type--", "0"));
             }
             else
             {
                 ddlServiceType.DataSource = null;
                 ddlServiceType.DataBind();
-                ddlServiceType.Items.Insert(0, new ListItem("--Select Payment--", "0"));
+                ddlServiceType.Items.Insert(0, new ListItem("--Select Type--", "0"));
             }
         }
         catch (Exception ex)
@@ -1450,8 +1471,13 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
                 string vatRate = (dt.AsEnumerable()
                     .Where(p => p["TypeId"].ToString() == DDlandType.SelectedItem.Value.ToString())
                     .Select(p => p["VatRate"].ToString())).FirstOrDefault();
-                vatRate = _objBOUtiltiy.FormatTwoDecimal(vatRate.ToString());
-
+                if (vatRate != null )
+                {
+                    vatRate = _objBOUtiltiy.FormatTwoDecimal(vatRate.ToString());
+                }else{
+                    vatRate = _objBOUtiltiy.FormatTwoDecimal(string.IsNullOrEmpty(vatRate) ? "0" :vatRate.ToString());
+                }
+             
                 txtLandExlVatPer.Text = vatRate;
                 txtLandVatPer.Text = vatRate;
             }
@@ -1472,6 +1498,7 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
             }
             else
             {
+                txtlandTotalExcl.Text = "0.00";
                 txtlandTotalIncl.Text = txtlandTotalExcl.Text;
 
             }
@@ -1712,7 +1739,7 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
             {
                 DDlandType.DataSource = ds.Tables[0];
                 DDlandType.DataTextField = "TypeName";
-                DDlandType.DataValueField = "TypeName";
+                DDlandType.DataValueField = "TypeId";
                 DDlandType.DataBind();
                 DDlandType.Items.Insert(0, new ListItem("--Select Type--", "0"));
             }
@@ -1813,14 +1840,23 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
                 txtlandTotalIncl.Text = _objBOUtiltiy.FormatTwoDecimal((Convert.ToDecimal(txtlandTotalExcl.Text) + Convert.ToDecimal(txtlandExclVatAmount.Text)).ToString());
 
             }
+
+            txtlandDuefromclient.Text = txtlandTotalIncl.Text;
+
             if (txtlandCommPer.Text != "")
             {
                 txtlandCommPer_TextChanged(null, null);
             }
             landPopExtender.Show();
 
-            txtlandDuefromclient.Text = txtlandTotalIncl.Text;
 
+
+            if (txtlandCommPer.Text == "")
+            {
+                txtlandDuetoSupplier.Text = txtlandTotalIncl.Text;
+            }
+
+          
         }
         catch (Exception ex)
         {
@@ -2595,4 +2631,9 @@ public partial class Admin_AutoInvoice : System.Web.UI.Page
     }
 
 
+    protected void txtSerTravelDate_TextChanged(object sender, EventArgs e)
+    {
+        txtserDetails.Focus();
+        SerPopupExtender.Show();
+    }
 }

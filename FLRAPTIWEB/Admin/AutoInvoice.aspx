@@ -63,9 +63,7 @@
             DatePickerSet();
             var prm = Sys.WebForms.PageRequestManager.getInstance();
             prm.add_endRequest(function () {
-
                 DatePickerSet();
-
             });
 
         });
@@ -74,54 +72,229 @@
             $('#ContentPlaceHolder1_txtInvDate').val('<%=System.DateTime.Now.ToShortDateString()%>');
             $("#ContentPlaceHolder1_txtInvDate").datepicker({
 
+                onSelect: function (selected) {
+                    $("#ContentPlaceHolder1_txtInvDate").focus();
+                },
                 format: 'yyyy-mm-dd',
+                startDate: '-9d',
+                endDate: '0d',
                 autoclose: true
 
             }).attr('readonly', 'false');;
-            $('#ContentPlaceHolder1_txtlandTravelFrom').val('<%=System.DateTime.Now.ToShortDateString()%>');
+
+
+
+            $("#ContentPlaceHolder1_txtAirTravelDate").datepicker({
+
+                onSelect: function (selected) {
+
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var y = dtMax.getFullYear();
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+                    $("#ContentPlaceHolder1_txtAirReturnDate").datepicker("option", "minDate", dtFormatted);
+                    $("#ContentPlaceHolder1_txtDate1").datepicker("option", "maxDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtDate2").datepicker("option", "maxDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtDate3").datepicker("option", "maxDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtDate4").datepicker("option", "maxDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtAirTravelDate").val(dtFormatted);
+
+                    $("#ContentPlaceHolder1_txtAirTravelDate").focus();
+                    //    $("#ContentPlaceHolder1_btnAirSubmit")
+                    $("#ContentPlaceHolder1_btnAirSubmit").val("Submit");
+
+                    $('#ContentPlaceHolder1_btnAirSubmit').removeAttr("disabled");
+                }
+            }).attr('readonly', 'true');;
+
+            $("#ContentPlaceHolder1_txtAirReturnDate").datepicker({
+                onSelect: function (selected) {
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var y = dtMax.getFullYear();
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+                    $("#ContentPlaceHolder1_txtAirTravelDate").datepicker("option", "maxDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtAirReturnDate").val(dtFormatted);
+                    $("#ContentPlaceHolder1_txtAirReturnDate").focus();
+                }
+            }).attr('readonly', 'true');;
+
+            //--------------------------------------------------------------------------------------------
+            $("#ContentPlaceHolder1_txtDate1").datepicker({
+                onSelect: function (selected) {
+                    debugger;
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var y = dtMax.getFullYear();
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+
+                    $("#ContentPlaceHolder1_txtDate2").datepicker("option", "minDate", dtFormatted);
+                    $("#ContentPlaceHolder1_txtAirReturnDate").datepicker("option", "minDate", dtFormatted);
+
+                    $("#ContentPlaceHolder1_txtDate2").val('');
+                    $("#ContentPlaceHolder1_txtDate3").val('');
+                    $("#ContentPlaceHolder1_txtDate4").val('');
+                    $("#ContentPlaceHolder1_txtAirReturnDate").val('');
+                    $("#ContentPlaceHolder1_txtAirTravelDate").val($("#ContentPlaceHolder1_txtDate1").val());
+
+                    $("#ContentPlaceHolder1_btnAirSubmit").val("Submit");
+                    $('#ContentPlaceHolder1_btnAirSubmit').removeAttr("disabled");
+
+                    $("#ContentPlaceHolder1_txtDate1").focus();
+                }
+
+
+            }).attr('readonly', 'true');;
+
+
+
+
+            $("#ContentPlaceHolder1_txtDate2").datepicker({
+                onSelect: function (selected) {
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var y = dtMax.getFullYear();
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+                    $("#ContentPlaceHolder1_txtDate3").datepicker("option", "minDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtAirReturnDate").datepicker("option", "minDate", dtFormatted);
+                    $("#ContentPlaceHolder1_txtDate3").val('');
+                    $("#ContentPlaceHolder1_txtDate4").val('');
+                    $("#ContentPlaceHolder1_txtAirReturnDate").val('');
+                    $("#ContentPlaceHolder1_txtDate2").val(dtFormatted);
+
+                    $("#ContentPlaceHolder1_btnAirSubmit").val("Submit");
+                    $('#ContentPlaceHolder1_btnAirSubmit').removeAttr("disabled");
+                    $("#ContentPlaceHolder1_txtDate2").focus();
+                }
+            }).attr('readonly', 'true');;
+            $("#ContentPlaceHolder1_txtDate3").datepicker({
+                onSelect: function (selected) {
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var y = dtMax.getFullYear();
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+                    $("#ContentPlaceHolder1_txtDate4").datepicker("option", "minDate", dtFormatted);
+                    $("#ContentPlaceHolder1_txtAirReturnDate").datepicker("option", "minDate", dtFormatted);
+                    $("#ContentPlaceHolder1_txtDate4").val('');
+                    $("#ContentPlaceHolder1_txtAirReturnDate").val('');
+                    $("#ContentPlaceHolder1_txtDate3").val(dtFormatted);
+
+                    $("#ContentPlaceHolder1_btnAirSubmit").val("Submit");
+                    $('#ContentPlaceHolder1_btnAirSubmit').removeAttr("disabled");
+                    $("#ContentPlaceHolder1_txtDate3").focus();
+                }
+            }).attr('readonly', 'true');;
+
+            $("#ContentPlaceHolder1_txtDate4").datepicker({
+                onSelect: function (selected) {
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var y = dtMax.getFullYear();
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+                    //  $("#ContentPlaceHolder1_txtDate1").datepicker("option", "minDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtAirReturnDate").datepicker("option", "minDate", dtFormatted);
+                    $("#ContentPlaceHolder1_txtAirReturnDate").val('');
+                    $("#ContentPlaceHolder1_txtDate4").val(dtFormatted);
+
+                    $("#ContentPlaceHolder1_btnAirSubmit").val("Submit");
+                    $('#ContentPlaceHolder1_btnAirSubmit').removeAttr("disabled");
+                    $("#ContentPlaceHolder1_txtDate4").focus();
+                }
+
+            }).attr('readonly', 'true');;
+
+
+            // $('#ContentPlaceHolder1_txtlandTravelFrom').val('<%=System.DateTime.Now.ToShortDateString()%>');
             $("#ContentPlaceHolder1_txtlandTravelFrom").datepicker({
+                onSelect: function (selected) {
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var y = dtMax.getFullYear();
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+                    $("#ContentPlaceHolder1_txtlandTravelto").datepicker("option", "minDate", dtFormatted);
+                    $("#ContentPlaceHolder1_txtlandTravelFrom").val(dtFormatted);
 
-                format: 'yyyy-mm-dd',
-                autoclose: true
+                    $("#ContentPlaceHolder1_LandArrSubmit").val("Submit");
+                    $('#ContentPlaceHolder1_LandArrSubmit').removeAttr("disabled");
+                    $("#ContentPlaceHolder1_txtlandTravelFrom").focus();
+                }
+            }).attr('readonly', 'true');;
 
-            }).attr('readonly', 'false');;
-            $('#ContentPlaceHolder1_txtlandTravelto').val('<%=System.DateTime.Now.ToShortDateString()%>');
             $("#ContentPlaceHolder1_txtlandTravelto").datepicker({
+                onSelect: function (selected) {
+                    var dtMax = new Date(selected);
+                    dtMax.setDate(dtMax.getDate());
+                    var dd = ('0' + dtMax.getDate()).slice(-2);
+                    var mm = ('0' + (dtMax.getMonth() + 1)).slice(-2);
+                    var y = dtMax.getFullYear();
+                    var dtFormatted = mm + '/' + dd + '/' + y;
+                    $("#ContentPlaceHolder1_txtlandTravelFrom").datepicker("option", "maxDate", dtFormatted)
+                    $("#ContentPlaceHolder1_txtlandTravelto").val(dtFormatted);
 
-                format: 'yyyy-mm-dd',
-                autoclose: true
+                    $("#ContentPlaceHolder1_txtlandBookingRef").focus();
+                }
+            }).attr('readonly', 'true');;
 
-            }).attr('readonly', 'false');;
-            //   $('#ContentPlaceHolder1_txtSerTravelDate').val('<%=System.DateTime.Now.ToShortDateString()%>');
+
+
+
             $("#ContentPlaceHolder1_txtSerTravelDate").datepicker({
+                onSelect: function (selected) {
+                    $("#ContentPlaceHolder1_txtSerTravelDate").focus();
+                    $("#ContentPlaceHolder1_SerSubmit").val("Submit");
+                    $('#ContentPlaceHolder1_SerSubmit').removeAttr("disabled");
+                },
+                numberOfMonths: 1,
+                dateFormat: 'yy-mm-dd',
+                autoclose: true,
 
-                format: 'yyyy-mm-dd',
-                autoclose: true
-
-            }).attr('readonly', 'false');;
+            }).attr('readonly', 'true');;
+            //Invoice
             $('#<%= drpInvClientType.ClientID %>').select2();
             $('#<%= drpInvClientName.ClientID %>').select2();
             $('#<%= ddlInvCosultant.ClientID %>').select2();
             $('#<%= drpInvBookingSrc.ClientID %>').select2();
             $('#<%= drpInvBookDest.ClientID %>').select2();
-
-          <%--  $('#<%= DDlandSupplier.ClientID %>').select2();
+            $('#<%= ddlInvPdfPrintStyle.ClientID %>').select2();
+            //Air Ticket
+           <%-- $('#<%= drpTicketType.ClientID %>').select2();
+            $('#<%= ddlAirLine.ClientID %>').select2();
+            $('#<%= ddlAirService.ClientID %>').select2();
+            $('#<%= ddlType.ClientID %>').select2();
+            $('#<%= ddlAirPayment.ClientID %>').select2();
+            //Land Suppliers
+            $('#<%= DDlandSupplier.ClientID %>').select2();
             $('#<%= DDlandService.ClientID %>').select2();
             $('#<%= DDlandType.ClientID %>').select2();
             $('#<%= DDlandPayment.ClientID %>').select2();
             $('#<%= DDlandCreditCard.ClientID %>').select2();
-
+            //Service Fee
             $('#<%= ddlServiceType.ClientID %>').select2();
             $('#<%= ddlSoureceref.ClientID %>').select2();
             $('#<%= ddlPassengerName.ClientID %>').select2();
             $('#<%= ddlPaymentMethod.ClientID %>').select2();
             $('#<%= ddlCreditCardType.ClientID %>').select2();
             $('#<%= ddlCollectVia.ClientID %>').select2();
-
+            //GenneralCharge
             $('#<%= ddlGenchrgType.ClientID %>').select2();
             $('#<%= ddlPassengerNames.ClientID %>').select2();
             $('#<%= ddlCrdCardType.ClientID %>').select2();--%>
         }
+
 
     </script>
 
@@ -1176,14 +1349,17 @@
                                             </div>
                                             <div class="col-sm-2">
 
-                                                <asp:DropDownList ID="ddlServiceType" runat="server" Class="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlServiceType_SelectedIndexChanged">
+                                                <asp:DropDownList ID="ddlServiceType" runat="server" Class="form-control" AppendDataBoundItems="true" AutoPostBack="true"
+                                                     OnSelectedIndexChanged="ddlServiceType_SelectedIndexChanged">
                                                     <%--<asp:ListItem Text="--Select Type--" Value="-1" Selected="True"></asp:ListItem>--%>
                                                 </asp:DropDownList>
                                                 <asp:RequiredFieldValidator ControlToValidate="ddlServiceType" runat="server" ID="rfvddlServiceType" ValidationGroup="servicefee"
                                                     ErrorMessage="Select Service Type" Text="Select Service Type" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0" />
                                             </div>
-                                            <div class="col-sm-1">
+                                         
+                                               <div class="col-sm-1">
                                             </div>
+
                                             <div class="col-sm-2">
                                                 <label class="control-label">
                                                     Source Reference<span class="style1">*</span>
@@ -1194,19 +1370,17 @@
 
                                                 <asp:DropDownList ID="ddlSoureceref" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnTextChanged="ddlSoureceref_TextChanged" AutoPostBack="true">
                                                     <%--<asp:ListItem Text="--Select TicketNo--" Value="-1" Selected="True"></asp:ListItem>--%>
-                                                </asp:DropDownList>
-                                            </div>
-                                            <asp:RequiredFieldValidator ControlToValidate="ddlSoureceref" runat="server" ID="rfvddlSoureceref" ValidationGroup="servicefee"
+                                                </asp:DropDownList>                                       
+                                            
+                                                <asp:RequiredFieldValidator ControlToValidate="ddlSoureceref" runat="server" ID="rfvddlSoureceref" ValidationGroup="servicefee"
                                                 ErrorMessage="Select Ticket Number" Text="Select Ticket Number" class="validationred" Display="Dynamic" ForeColor="Red" InitialValue="0" />
 
-
+                                               </div>
                                             <div class="col-sm-1">
                                                 <label class="control-label">
                                                     Merge? 
                                                 </label>
                                             </div>
-
-
                                             <div class="col-sm-2">
 
                                                 <asp:CheckBox ID="chkMerge" runat="server" />
@@ -1221,8 +1395,9 @@
                                                     Travel Date<span class="style1">*</span></label>
                                             </div>
                                             <div class="col-sm-2">
-                                                <asp:TextBox ID="txtSerTravelDate" runat="server" CssClass="form-control" placeholder="yyyy/mm/dd" />
-                                                <asp:RequiredFieldValidator ControlToValidate="txtSerTravelDate" runat="server" ID="rfvtxtSerTravelDate"
+                                                   <asp:TextBox ID="txtSerTravelDate" runat="server"
+                                                    OnTextChanged="txtSerTravelDate_TextChanged" AutoPostBack="true" CssClass="form-control" placeholder="YYYY-MM-DD" BackColor="White" />
+                                                 <asp:RequiredFieldValidator ControlToValidate="txtSerTravelDate" runat="server" ID="rfvtxtSerTravelDate"
                                                     ValidationGroup="servicefee" ErrorMessage="Enter Travel Date." Text="Enter Travel Date." ForeColor="red" Display="Dynamic" />
 
 
