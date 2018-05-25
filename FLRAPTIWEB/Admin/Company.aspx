@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <asp:FileUpload ID="CompanyLogoUpload" runat="server" />
-                                <a id="logoview" href="#" runat="server">
+                                <a target="_blank" id="logoview" href="#" runat="server">
                                     <asp:Label ID="lblLogo" runat="server" /></a>
                                 <asp:RequiredFieldValidator ControlToValidate="CompanyLogoUpload" runat="server" ID="rfvCompanyLogoUpload" ValidationGroup="Company"
                                     ErrorMessage="Select Logo" SetFocusOnError="true" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -67,7 +67,7 @@
                             <div class="col-sm-1"></div>
 
                             <div class="col-sm-2">
-                                <label class="control-label">Phone No (<span class="style1">*</span>)</label>
+                                <label class="control-label">Phone No </label>
                             </div>
                             <div class="col-sm-3">
                                 <asp:TextBox ID="txtPhoneNo" runat="server" CssClass="form-control" MaxLength="50" placeholder="Phone Number" />
@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="col-sm-2">
-                                <label class="control-label">Web Site(<span class="style1">*</span>)</label>
+                                <label class="control-label">Web Site</label>
                             </div>
                             <div class="col-sm-3">
                                 <asp:TextBox ID="txtWebSite" runat="server" CssClass="form-control" MaxLength="30" placeholder="Company Web Site" />
@@ -89,7 +89,7 @@
                             <div class="col-sm-1"></div>
 
                             <div class="col-sm-2">
-                                <label class="control-label">Fax No (<span class="style1">*</span>)</label>
+                                <label class="control-label">Fax No </label>
                             </div>
                             <div class="col-sm-3">
                                 <asp:TextBox ID="txtFaxNo" runat="server" CssClass="form-control" MaxLength="50" placeholder="Company Fax Number" />
@@ -162,7 +162,7 @@
                         <div class="col-sm-5">
                         </div>
                         <div class="col-sm-4">
-                            <asp:Button runat="server" ID="Company_Submit" class="btn btn-success btn-lg" ValidationGroup="landsupplier"
+                            <asp:Button runat="server" ID="Company_Submit" class="btn btn-success btn-lg" ValidationGroup="Company"
                                 Text="Submit"
                                 UseSubmitBehavior="false"
                                 OnClientClick="this.disabled='true';this.value='Please Wait...' "
