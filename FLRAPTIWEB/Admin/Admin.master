@@ -36,7 +36,7 @@
         <script src="js/JQuery2.js"></script>
    
     <!-- Head Libs -->
-   <%-- <script src="assets/vendor/modernizr/modernizr.js"></script>--%>
+    <script src="assets/vendor/modernizr/modernizr.js"></script>
 
     <%-- loded jquery and jquery ui by anitha for invoice jquery model popup --%>
     
