@@ -543,8 +543,8 @@ public partial class Admin_CreditNote : System.Web.UI.Page
          
             _objEmInvoice.InvId = InvId;
 
-            DataSet ds = _objBalInvoice.GetInvoice(InvId);
-
+            DataSet ds = objBALInvoice.GetInvoice(InvId, Convert.ToInt32(Session["UserCompanyId"].ToString()), Convert.ToInt32(Session["UserLoginId"].ToString()));
+      
 
             if (ds.Tables.Count > 0)
             {
