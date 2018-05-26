@@ -54,10 +54,13 @@ namespace DataManager
 
             return ExecuteDataSet("MainAccount_IsExitAccCode",htParams);
         }
-        public DataSet getMainAccounts()
+        public DataSet getMainAccounts(int CompanyId)
         {
-
-            return ExecuteDataSet("MainAcount_ListGet");
+            Hashtable htParams = new Hashtable
+                                     {
+                                       {"@CompanyId",CompanyId}
+                                     };
+            return ExecuteDataSet("MainAcount_ListGet" ,htParams);
         }
     }
 }

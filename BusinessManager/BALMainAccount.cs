@@ -38,9 +38,9 @@ namespace BusinessManager
             return _objDALMainAcc.IsExitMainAccCode(AccCode);
             
         }
-        public DataSet getMainAccounts()
+        public DataSet getMainAccounts(int CompanyId)
         {
-            return _objDALMainAcc.getMainAccounts();
+            return _objDALMainAcc.getMainAccounts(CompanyId);
         }
 
     }

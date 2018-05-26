@@ -31,7 +31,8 @@ public partial class Admin_CharteredAccountsList : System.Web.UI.Page
         try
         {
             gvCharteredAccountsList.PageSize = int.Parse(ViewState["ps"].ToString());
-            DataSet ds = _objcharAcc.BindCharAccList();
+            int CompanyId = Convert.ToInt32(Session["UserCompanyId"].ToString());
+            DataSet ds = _objcharAcc.BindCharAccList(CompanyId);
             Session["dt"] = ds.Tables[0];
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {

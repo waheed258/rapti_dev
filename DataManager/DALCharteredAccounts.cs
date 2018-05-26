@@ -50,10 +50,14 @@ namespace DataManager
           return ExecuteNonQuery("CharteredAccounts_Insert", htParams);
       }
 
-      public DataSet BindCharAccList()
+      public DataSet BindCharAccList(int CompanyId)
       {
+          Hashtable htParams = new Hashtable
+                                     {
+                                       {"@CompanyId",CompanyId}
+                                     };
 
-          return ExecuteDataSet("CharteredAccounts_ChartedAccList");
+          return ExecuteDataSet("CharteredAccounts_ChartedAccList",htParams);
       }
     }
 }

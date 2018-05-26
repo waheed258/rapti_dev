@@ -23,9 +23,9 @@ namespace BusinessManager
          return _objDALChartedAcc.BindMasterTypeandAccountCode(MasteAccId);
      }
 
-     public DataSet BindCharAccList()
+     public DataSet BindCharAccList(int CompanyId)
      {
-         return _objDALChartedAcc.BindCharAccList();
+         return _objDALChartedAcc.BindCharAccList(CompanyId);
      }
      public int CharteredAccountInsert(EmCharteredAccounts objcharteredaccount)
      {

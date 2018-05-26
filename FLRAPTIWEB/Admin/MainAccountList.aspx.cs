@@ -30,7 +30,9 @@ public partial class Admin_MainAccountList : System.Web.UI.Page
         {
             gvMainAccList.PageSize = int.Parse(ViewState["ps"].ToString());
            // int AirportId = 0;
-            DataSet ds = _objBALMainAccount.getMainAccounts();
+
+            int CompanyId = Convert.ToInt32(Session["UserCompanyId"].ToString());
+            DataSet ds = _objBALMainAccount.getMainAccounts(CompanyId);
             Session["dt"] = ds.Tables[0];
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
