@@ -107,8 +107,8 @@ public partial class Admin_ImportTicketList : System.Web.UI.Page
                     "%' OR Client LIKE '%" + SearchText +
                     "%' OR Convert(Fare ,'System.String') LIKE '%" + SearchText +
                     "%' OR Convert(VAT,'System.String') LIKE '%" + SearchText +
-                      "%' OR Airport  LIKE '%" + SearchText +
-                    //  "%' OR Convert(Airport Taxes,'System.Decimal') LIKE '%" + SearchText +
+                   //   "%' OR Airport  LIKE '%" + SearchText +
+                      "%' OR Convert(AirportTaxes,'System.Decimal') LIKE '%" + SearchText +
                     //"%' OR Convert(BSPAmount,'System.String') LIKE '%" + SearchText +
                      "%' OR Reference LIKE '%" + SearchText + "%'");
 

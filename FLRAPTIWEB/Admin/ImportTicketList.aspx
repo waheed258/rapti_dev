@@ -101,9 +101,9 @@
                      <%#Eval("Date")%>
                  </ItemTemplate>
              </asp:TemplateField>
-             <asp:TemplateField HeaderText="AirLine">
+             <asp:TemplateField HeaderText="Air Line">
                  <ItemTemplate>
-                     <%#Eval("Air Line")%>
+                     <%#Eval("AirLine")%>
                  </ItemTemplate>
              </asp:TemplateField>
              <asp:TemplateField HeaderText="Consultant">
@@ -138,12 +138,12 @@
                     </asp:TemplateField>--%>
              <asp:TemplateField HeaderText="Airport Taxes" ItemStyle-HorizontalAlign="Right">
                  <ItemTemplate>
-                     <%#Eval("Airport Taxes")%>
+                     <%#Eval("AirportTaxes")%>
                  </ItemTemplate>
              </asp:TemplateField>
              <asp:TemplateField HeaderText="BSP Amount" ItemStyle-HorizontalAlign="Right">
                  <ItemTemplate>
-                     <%#Eval("BSP Amount")%>
+                     <%#Eval("BSPAmount")%>
                  </ItemTemplate>
              </asp:TemplateField>
              <asp:TemplateField HeaderText="Reference">
