@@ -17,6 +17,7 @@ public partial class Admin_GroupTypes : System.Web.UI.Page
     {
         if(!IsPostBack)
         {
+            BindGroupType();
             if (!string.IsNullOrEmpty(Request.QueryString["Id"]))
             {
                 int GroupId = Convert.ToInt32(Request.QueryString["Id"]);
@@ -93,6 +94,39 @@ public partial class Admin_GroupTypes : System.Web.UI.Page
         }
         
     }
+
+    private void BindGroupType()
+    {
+        try
+        {
+            
+
+            DataSet ds = objBAGroupTypes.GetGroupTypeMaster();
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                ddlGroupType.DataSource = ds.Tables[0];
+                ddlGroupType.DataTextField = "GTDescription";
+                ddlGroupType.DataValueField = "GroupTypeId";
+                ddlGroupType.DataBind();
+                ddlGroupType.Items.Insert(0, new ListItem("-- Please Select --", "0"));
+
+
+            }
+            else
+            {
+                ddlGroupType.DataSource = null;
+                ddlGroupType.DataBind();
+                ddlGroupType.Items.Insert(0, new ListItem("-- Please Select --", "0"));
+
+            }
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = _objBOUtiltiy.ShowMessage("danger", "error", ex.Message);
+            ExceptionLogging.SendExcepToDB(ex);
+        }
+    }
+
 
     #endregion PrivateMethods
 

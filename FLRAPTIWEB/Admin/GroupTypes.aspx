@@ -6,6 +6,22 @@
             color: #FF0000;
         }
     </style>
+     <script>
+
+         $(document).ready(function () {
+             DrpSearch();
+             var prm = Sys.WebForms.PageRequestManager.getInstance();
+             prm.add_endRequest(function () {
+                 DrpSearch();
+             });
+
+         });
+
+         function DrpSearch() {
+             $('#<%= ddlGroupType.ClientID %>').select2();
+            
+        };
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Label ID="lblMsg" runat="server"></asp:Label>
@@ -59,9 +75,9 @@
                     </div>
                     <div class="col-sm-3">
                         <asp:DropDownList ID="ddlGroupType" runat="server" CssClass="form-control">
-                             <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
+                             <%--<asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
                             <asp:ListItem Text="Client" Value="Client"></asp:ListItem>
-                            <asp:ListItem Text="Consultant" Value="Consultant"></asp:ListItem>
+                            <asp:ListItem Text="Consultant" Value="Consultant"></asp:ListItem>--%>
                         </asp:DropDownList>
                       <%--  <asp:RequiredFieldValidator ControlToValidate="ddlGroupType" runat="server" ID="rfvddlGroupType"
                             Display="Dynamic" Text="Select GroupType." ErrorMessage="Select GroupType." ValidationGroup="grouptypes" ForeColor="Red" InitialValue="-1" />--%>

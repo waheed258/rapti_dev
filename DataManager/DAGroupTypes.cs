@@ -44,5 +44,9 @@ namespace DataManager
                                       };
             return ExecuteDataSet("GroupMaster_Get", htparams);
         }
+        public DataSet GetGroupTypeMaster()
+        {
+            return ExecuteDataSet("GroupTypeMaster_Get");
+        }
     }
 }

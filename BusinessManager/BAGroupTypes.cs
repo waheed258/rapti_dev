@@ -26,5 +26,9 @@ namespace BusinessManager
         {
             return objDAGroupTypes.GetGroupTypes(Id);
         }
+        public DataSet GetGroupTypeMaster()
+        {
+            return objDAGroupTypes.GetGroupTypeMaster();
+        }
     }
 }
